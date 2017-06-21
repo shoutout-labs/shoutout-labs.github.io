@@ -16,11 +16,10 @@ This document provides required details to connect with ShoutOUT REST API from t
 
 #### Create or Update Contact(s)
 
+**Sample curl command**
 
-```markdown
-Sample curl command
-
-curl -X PUT 
+```curl
+curl -X POST 
 --header 'Content-Type: application/json' 
 --header 'Accept: application/json' 
 --header 'Authorization: Apikey <API_KEY>' 
@@ -35,11 +34,10 @@ curl -X PUT
 
 #### Create Activity
 
+**Sample curl command**
 
-```markdown
-Sample curl command
-
-curl -X PUT 
+```curl
+curl -X POST 
 --header 'Content-Type: application/json' 
 --header 'Accept: application/json' 
 --header 'Authorization: Apikey <API_KEY>' 
@@ -56,11 +54,10 @@ curl -X PUT
 
 #### Send Message
 
+**Sample curl command**
 
-```markdown
-Sample curl command
-
-curl -X PUT 
+```curl
+curl -X POST 
 --header 'Content-Type: application/json' 
 --header 'Accept: application/json' 
 --header 'Authorization: Apikey <API_KEY>' 
