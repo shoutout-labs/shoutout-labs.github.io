@@ -1,37 +1,75 @@
-## Welcome to GitHub Pages
+## ShoutOUT Developer Hub
 
-You can use the [editor on GitHub](https://github.com/shoutout-labs/shoutout-labs.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Usage instructions for [ShoutOUT](https://getshoutout.com/) SDKs, API and Sample Implementations
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Introduction
 
-### Markdown
+This document provides required details to connect with ShoutOUT REST API from third party applications using standard SDKs and HTTP clients.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### SDKs
+
+- [Node SDK](https://www.npmjs.com/package/shoutout-sdk)
+- [PHP SDK](https://packagist.org/packages/shoutoutlabs/shoutout-sdk)
+- [Java SDK](https://github.com/shoutout-labs/shoutout-sdk-java)
+
+### REST API
+
+#### Create or Update Contact(s)
+
 
 ```markdown
-Syntax highlighted code block
+Sample curl command
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+curl -X PUT 
+--header 'Content-Type: application/json' 
+--header 'Accept: application/json' 
+--header 'Authorization: Apikey <API_KEY>' 
+-d '[{
+        user_id: '94777123456',
+        mobile_number: '94777123456',
+        email: 'duke@test.com',
+        name: 'Duke',
+        tags: ['lead']
+    }]' 'https://getshoutout.com/api/v8/contacts'
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+#### Create Activity
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/shoutout-labs/shoutout-labs.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+```markdown
+Sample curl command
 
-### Support or Contact
+curl -X PUT 
+--header 'Content-Type: application/json' 
+--header 'Accept: application/json' 
+--header 'Authorization: Apikey <API_KEY>' 
+-d '{
+        userId: '94777123456',
+        activityName: 'Sample Activity',
+        activityData: {
+            param1: 'val1',
+            param2: 'val2',
+            param3: 'val3'
+        }
+    }' 'https://getshoutout.com/v8/activities'
+```
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+#### Send Message
+
+
+```markdown
+Sample curl command
+
+curl -X PUT 
+--header 'Content-Type: application/json' 
+--header 'Accept: application/json' 
+--header 'Authorization: Apikey <API_KEY>' 
+-d '{
+        source: 'ShoutDEMO',
+        destinations: ['94777123456'],
+        content: {
+            sms: 'Sent via SMS Gateway'
+        },
+        transports: ['sms']
+    }' 'https://getshoutout.com/v7/messages'
+```
