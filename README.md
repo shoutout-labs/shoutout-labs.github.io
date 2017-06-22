@@ -2,10 +2,10 @@
 
 Integrating with ShoutOUT is very easy. You have two options.
 
- 1. Use our client library to connect to our RESTful api
- 2. Directly connect to our RESTful api
+ 1. [Use our client library to connect to our RESTful api](#cL)
+ 2. [Directly connect to our RESTful api](#rA)
 
-### Client Libraries
+### <a id="#cL"></a>Client Libraries
 
 We maintain client libraries for several languages to connect to our RESTful API.
 
@@ -13,7 +13,7 @@ We maintain client libraries for several languages to connect to our RESTful API
 - [PHP](https://packagist.org/packages/shoutoutlabs/shoutout-sdk)
 - [Java](https://github.com/shoutout-labs/shoutout-sdk-java)
 
-### RESTful API
+### <a id="#rA"></a>RESTful API
 
 We have a very simple RESTful api with mainly three endpoints. And all three endpoints receives request data as JSON objects.
 
@@ -22,7 +22,7 @@ We have a very simple RESTful api with mainly three endpoints. And all three end
  3. [Send message](#3)
 
 
-#### <a name="#1"></a>Create or Update Contact(s)
+#### <a id="#1"></a>Create or Update Contact(s)
 
 **Sample curl command**
 
@@ -40,7 +40,7 @@ curl -X POST
     }]' 'https://getshoutout.com/api/v8/contacts'
 ```
 
-#### <a name="#2"></a>Create Activity
+#### <a id="#2"></a>Create Activity
 
 **Sample curl command**
 
@@ -60,7 +60,7 @@ curl -X POST
     }' 'https://getshoutout.com/v8/activities'
 ```
 
-#### <a name="#3"></a>Send Message
+#### <a id="#3"></a>Send Message
 
 **Sample curl command**
 
