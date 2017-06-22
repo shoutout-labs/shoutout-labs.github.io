@@ -1,14 +1,19 @@
-### Introduction
+### Integrate with ShoutOUT
 
-This document provides required details to connect with ShoutOUT REST API from third party applications using standard SDKs and HTTP clients.
+Integrating with ShoutOUT is very easy. You have two options.
 
-### SDKs
+ 1. Use our client library to connect to our restful api
+ 2. Directly connect to our restful api
 
-- [Node SDK](https://www.npmjs.com/package/shoutout-sdk)
-- [PHP SDK](https://packagist.org/packages/shoutoutlabs/shoutout-sdk)
-- [Java SDK](https://github.com/shoutout-labs/shoutout-sdk-java)
+### Client Libraries
 
-### REST API
+We maintain client libraries for several languages to connect to our RESTful API.
+
+- [NodeJS](https://www.npmjs.com/package/shoutout-sdk)
+- [PHP](https://packagist.org/packages/shoutoutlabs/shoutout-sdk)
+- [Java](https://github.com/shoutout-labs/shoutout-sdk-java)
+
+### RESTful API
 
 #### Create or Update Contact(s)
 
@@ -66,3 +71,9 @@ curl -X POST
         transports: ['sms']
     }' 'https://getshoutout.com/v7/messages'
 ```
+
+### Questions or Problems ?
+
+if you run into any difficulties or can't get something to work. Don't hesitate to contact us via <support@getshoutout.com>. We would love to help you out.
+
+<small>Copyright © 2017. ShoutOUT Labs. All Rights Reserved.</small>
