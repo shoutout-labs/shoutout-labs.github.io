@@ -15,7 +15,14 @@ We maintain client libraries for several languages to connect to our RESTful API
 
 ### RESTful API
 
-#### Create or Update Contact(s)
+We have a very simple RESTful api with mainly three endpoints. And all three endpoints receives request data as JSON objects.
+
+ 1. [Create or update contact(s)](#1)
+ 2. [Create activity](#2)
+ 3. [Send message](#3)
+
+
+#### <a name="#1"></a>Create or Update Contact(s)
 
 **Sample curl command**
 
@@ -33,7 +40,7 @@ curl -X POST
     }]' 'https://getshoutout.com/api/v8/contacts'
 ```
 
-#### Create Activity
+#### <a name="#2"></a>Create Activity
 
 **Sample curl command**
 
@@ -53,7 +60,7 @@ curl -X POST
     }' 'https://getshoutout.com/v8/activities'
 ```
 
-#### Send Message
+#### <a name="#3"></a>Send Message
 
 **Sample curl command**
 
@@ -74,6 +81,6 @@ curl -X POST
 
 ### Questions or Problems ?
 
-if you run into any difficulties or can't get something to work. Don't hesitate to contact us via <support@getshoutout.com>. We would love to help you out.
+If you run into any difficulties or can't get something to work. Don't hesitate to contact us via <support@getshoutout.com>. We would love to help you out.
 
 <small>Copyright © 2017. ShoutOUT Labs. All Rights Reserved.</small>
