@@ -1,7 +1,3 @@
-## ShoutOUT Developer Hub
-
-Usage instructions for [ShoutOUT](https://getshoutout.com/) SDKs, API and Sample Implementations
-
 ### Introduction
 
 This document provides required details to connect with ShoutOUT REST API from third party applications using standard SDKs and HTTP clients.
