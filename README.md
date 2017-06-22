@@ -2,8 +2,8 @@
 
 Integrating with ShoutOUT is very easy. You have two options.
 
- 1. Use our client library to connect to our RESTful api
- 2. Directly connect to our RESTful api
+ 1. Use our client library to connect to our RESTful API
+ 2. Directly connect to our RESTful API
 
 ### <a id="#cL"></a>Client Libraries
 
@@ -15,7 +15,7 @@ We maintain client libraries for several languages to connect to our RESTful API
 
 ### <a id="#rA"></a>RESTful API
 
-We have a very simple RESTful api with mainly three endpoints. And all three endpoints receives request data as JSON objects.
+We have a very simple RESTful API with mainly three endpoints. And all three endpoints receives request data as JSON objects.
 
  1. Create or update contact(s)
  2. Create activity
