@@ -2,8 +2,8 @@
 
 Integrating with ShoutOUT is very easy. You have two options.
 
- 1. [Use our client library to connect to our RESTful api](#cL)
- 2. [Directly connect to our RESTful api](#rA)
+ 1. Use our client library to connect to our RESTful api
+ 2. Directly connect to our RESTful api
 
 ### <a id="#cL"></a>Client Libraries
 
@@ -17,9 +17,9 @@ We maintain client libraries for several languages to connect to our RESTful API
 
 We have a very simple RESTful api with mainly three endpoints. And all three endpoints receives request data as JSON objects.
 
- 1. [Create or update contact(s)](#1)
- 2. [Create activity](#2)
- 3. [Send message](#3)
+ 1. Create or update contact(s)
+ 2. Create activity
+ 3. Send message
 
 
 #### <a id="#1"></a>Create or Update Contact(s)
@@ -83,4 +83,4 @@ curl -X POST
 
 If you run into any difficulties or can't get something to work. Don't hesitate to contact us via <support@getshoutout.com>. We would love to help you out.
 
-<small>Copyright © 2017. [ShoutOUT](https://getshoutout.com/) Labs. All Rights Reserved.</small>
+<small>Copyright © 2017. ShoutOUT Labs. All Rights Reserved.</small>
