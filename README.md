@@ -83,4 +83,4 @@ curl -X POST
 
 If you run into any difficulties or can't get something to work. Don't hesitate to contact us via <support@getshoutout.com>. We would love to help you out.
 
-<small>Copyright © 2017. ShoutOUT Labs. All Rights Reserved.</small>
+<small>Copyright © 2017. [ShoutOUT](https://getshoutout.com/) Labs. All Rights Reserved.</small>
