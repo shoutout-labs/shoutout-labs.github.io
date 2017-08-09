@@ -6,10 +6,10 @@
 
 
 1. User provide mobile number to your application
-2. Your application make send OTP request to OTP service with mobile number and store the reference id
-3. OTP service send a SMS with a code to the mobile number in step 2
+2. Your application make send OTP request to OTP service with mobile number and store the reference id received
+3. OTP service send a SMS with a code to the mobile number
 4. User provide the received code to your application
-5. Your application make make verify OTP request to OTP service with code and reference id received in step 2 and receive the verify status
+5. Your application make verify OTP request to OTP service with code and reference id and receive the verify status
 
 ### <a id="#rA"></a>RESTful API
 
