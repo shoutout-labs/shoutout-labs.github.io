@@ -36,7 +36,7 @@ curl -X POST
   "source": "ShoutDEMO",
   "transport": "sms",
   "content": {
-    "sms": "Hi Duke! Your code is {{code}}"
+    "sms": "Hi Duke! Your code is {{ noparse }}{{code}}{{ /noparse }} "
   }
 }' 'https://getshoutout.com/v1/otp/send'
 ```
