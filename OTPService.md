@@ -1,9 +1,9 @@
-### One Time Password Service
-
-![Service Architecture](http://developers.getshoutout.com/images/OTP_Service_Message_Flow.png "How it works")
-
+## One Time Password Service
 
 ### <a id="#rH"></a>How it Works
+
+<div style="text-align:center"><img src ="http://developers.getshoutout.com/images/OTP_Service_Message_Flow.png" /></div>
+
 
 1. User provide mobile number to your application
 2. Your application make send OTP request to OTP service with mobile number and store the reference id
