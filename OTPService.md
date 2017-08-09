@@ -1,5 +1,9 @@
 ## One Time Password Service
 
+Easy mobile number verification service available as an API. This service allows an application to easily send a system generated code to a mobile number and
+verify it programmatically. This can be used for two factor authentication, mobile number verification and
+one time password (magic passwords) like use cases.
+
 ### <a id="#rH"></a>How it Works
 
 <div style="text-align:center"><img src ="http://developers.getshoutout.com/images/OTP_Service_Message_Flow.png" /></div>
