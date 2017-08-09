@@ -5,7 +5,7 @@ Integrating with ShoutOUT is very easy. You have two options.
  1. Use our client library to connect to our RESTful API
  2. Directly connect to our RESTful API
 
-### <a id="#cL"></a>Client Libraries
+### <a id="#cL"></a>SDKs & Client Libraries
 
 We maintain client libraries for several languages to connect to our RESTful API.
 
