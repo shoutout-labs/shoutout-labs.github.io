@@ -23,7 +23,7 @@ Loyalty service available as an API. This service allows a merchant to easily in
 
 ### <a id="#rA"></a>RESTful API
 
-We have a very simple RESTful API with mainly two endpoints. And both endpoints receives request data as JSON objects.
+We have a very simple RESTful API with mainly three endpoints. And both endpoints receives request data as JSON objects.
 
  1. Register Users
  2. Collect Points
