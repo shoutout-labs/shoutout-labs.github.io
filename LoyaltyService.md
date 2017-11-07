@@ -6,6 +6,14 @@ Loyalty service available as an API. This service allows a merchant to easily in
 
 <div style="text-align:center"><img src ="http://developers.getshoutout.com/images/Loyalty_Service_Overview.png" /></div>
 
+#### User Registration
+
+ 1. Merchant submit the customer details to loyalty service using one of the following
+ - Hosted registration form
+ - Embedded registration form
+ - Direct API call
+ 2. Optionally customer receives a SMS or an Email with a welcome message and details of his/her loyalty account
+
 #### Point Collection
 
 1. Merchant record customer transactions in the PoS system
@@ -17,10 +25,15 @@ Loyalty service available as an API. This service allows a merchant to easily in
 
 We have a very simple RESTful API with mainly two endpoints. And both endpoints receives request data as JSON objects.
 
- 1. Collect Points
- 2. Redeem Points
+ 1. Register Users
+ 2. Collect Points
+ 3. Redeem Points
 
-#### <a id="#1"></a>Collect Points
+#### <a id="#2"></a>Register Users
+
+This is a merchant specific endpoint and would be created upon request based on the merchant specific parameters
+
+#### <a id="#2"></a>Collect Points
 
 **Sample curl command**
 
@@ -39,7 +52,7 @@ curl -X POST \
 }'
 ```
 
-#### <a id="#2"></a>Redeem Points
+#### <a id="#3"></a>Redeem Points
 
 **Sample curl command**
 
