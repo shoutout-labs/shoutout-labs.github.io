@@ -36,6 +36,30 @@ This is a merchant specific endpoint and would be created upon request based on 
 
 #### <a id="#2"></a>Load User
 
+Each user has its own URL
+```
+https://api.getshoutout.com/loyaltyservice/users/{id}
+```
+
+where the `{id}` is the value of user's loyalty id. And the user can be fetched via a GET method to this URL.
+
+#####Request Headers
+
+<table>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>Apikey {API_KEY}</td>
+</tr>
+</table>
+
+#####Returns
+
+A user object
+
 **Sample curl command**
 
 ```curl
