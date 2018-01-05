@@ -64,7 +64,7 @@ A user object
 
 ```curl
 curl -X GET \
-  https://api.getshoutout.com/loyaltyservice/users/<LOYALTY_ID> \
+  https://api.getshoutout.com/loyaltyservice/users/{id} \
   -H 'authorization: Bearer <API_KEY>'
 }'
 ```
