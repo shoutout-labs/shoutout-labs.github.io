@@ -23,23 +23,35 @@ Loyalty service available as an API. This service allows a merchant to easily in
 
 ### <a id="#rA"></a>RESTful API
 
-We have a very simple RESTful API with mainly three endpoints. And both endpoints receives request data as JSON objects.
+We have a very simple RESTful API with mainly four endpoints. And all endpoints receives request data as JSON objects.
 
  1. Register Users
- 2. Collect Points
- 3. Redeem Points
+ 2. Load User
+ 3. Collect Points
+ 4. Redeem Points
 
-#### <a id="#2"></a>Register Users
+#### <a id="#1"></a>Register Users
 
 This is a merchant specific endpoint and would be created upon request based on the merchant specific parameters
 
-#### <a id="#2"></a>Collect Points
+#### <a id="#2"></a>Load User
+
+**Sample curl command**
+
+```curl
+curl -X GET \
+  https://api.getshoutout.com/loyaltyservice/users/<LOYALTY_ID> \
+  -H 'authorization: Bearer <API_KEY>'
+}'
+```
+
+#### <a id="#3"></a>Collect Points
 
 **Sample curl command**
 
 ```curl
 curl -X POST \
-  https://getshoutout.com/v8/points \
+  https://api.getshoutout.com/loyaltyservice/points \
   -H 'authorization: Bearer <API_KEY>' \
   -H 'content-type: application/json' \
   -d '{
@@ -52,13 +64,13 @@ curl -X POST \
 }'
 ```
 
-#### <a id="#3"></a>Redeem Points
+#### <a id="#4"></a>Redeem Points
 
 **Sample curl command**
 
 ```curl
 curl -X POST \
-  https://getshoutout.com/v8/points \
+  https://api.getshoutout.com/loyaltyservice/points \
   -H 'authorization: Bearer <API_KEY>' \
   -H 'content-type: application/json' \
   -d '{
