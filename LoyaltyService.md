@@ -43,7 +43,7 @@ https://api.getshoutout.com/loyaltyservice/users/{id}
 
 where the `{id}` is the value of user's loyalty id. And the user can be fetched via a GET method to this URL.
 
-#####Request Headers
+**Request Headers**
 
 <table>
 <tr>
@@ -56,7 +56,7 @@ where the `{id}` is the value of user's loyalty id. And the user can be fetched 
 </tr>
 </table>
 
-#####Returns
+**Returns**
 
 A user object
 
@@ -70,6 +70,48 @@ curl -X GET \
 ```
 
 #### <a id="#3"></a>Collect Points
+
+Points can be added to users via a POST method to
+```
+https://api.getshoutout.com/loyaltyservice/points
+```
+which accepts a JSON object describing the bill or the points to be added.
+
+**Request Headers**
+
+<table>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>Apikey {API_KEY}</td>
+</tr>
+</table>
+
+**Attributes**
+
+<table>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>userId</td>
+<td>Yes</td>
+<td>String</td>
+<td>Loyalty id of the user</td>
+</tr>
+<tr>
+<td>activityData</td>
+<td>Yes</td>
+<td>Object</td>
+<td>Object describing the bill or the points to be collected (see the sample below)</td>
+</tr>
+</table>
 
 **Sample curl command**
 
@@ -89,6 +131,48 @@ curl -X POST \
 ```
 
 #### <a id="#4"></a>Redeem Points
+
+Points can be redeemed from users via a POST method to
+```
+https://api.getshoutout.com/loyaltyservice/points
+```
+which accepts a JSON object describing the points to redeemed.
+
+**Request Headers**
+
+<table>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>Authorization</td>
+<td>Apikey {API_KEY}</td>
+</tr>
+</table>
+
+**Attributes**
+
+<table>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>userId</td>
+<td>Yes</td>
+<td>String</td>
+<td>Loyalty id of the user</td>
+</tr>
+<tr>
+<td>activityData</td>
+<td>Yes</td>
+<td>Object</td>
+<td>Object describing the points to be redeemed (see the sample below)</td>
+</tr>
+</table>
 
 **Sample curl command**
 
