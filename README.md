@@ -37,7 +37,7 @@ curl -X POST
         email: 'duke@test.com',
         name: 'Duke',
         tags: ['lead']
-    }]' 'https://getshoutout.com/api/v8/contacts'
+    }]' 'https://api.getshoutout.com/coreservice/contacts'
 ```
 
 #### <a id="#2"></a>Create Activity
@@ -57,7 +57,7 @@ curl -X POST
             param2: 'val2',
             param3: 'val3'
         }
-    }' 'https://getshoutout.com/v8/activities'
+    }' 'https://api.getshoutout.com/coreservice/activities'
 ```
 
 #### <a id="#3"></a>Send Message
@@ -76,7 +76,7 @@ curl -X POST
             sms: 'Sent via SMS Gateway'
         },
         transports: ['sms']
-    }' 'https://getshoutout.com/v7/messages'
+    }' 'https://api.getshoutout.com/coreservice/messages'
 ```
 
 ### Questions or Problems ?
