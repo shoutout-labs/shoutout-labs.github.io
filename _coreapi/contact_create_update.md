@@ -4,21 +4,28 @@ position: 1.1
 type: post
 description: Create or update contact(s)
 parameters:
-  - name: title
-    content: The title for the book
-  - name: score
-    content: The book's score between 0 and 5
+  - name: user_id
+    content: Unique attribute to identify a person in your people list (Ex:- Mobile Number, Email or System Generated User ID)
+  - name: name
+    content: Name of the person
+  - name: mobile_number
+    content: Mobile number of the person in E.164 format
+  - name: email
+    content: Email of the person
+  - name: tags
+    content: String array of tags (Ex:- ["lead","employee"])
 content_markdown: |-
-  The book will automatically be added to your reading list
-  {: .success}
+  Additionally to above default parameters, you can define your own custom parameters
+  {: .info}
 
-  Adds a book to your collection.
+  Create or update contact(s)
 left_code_blocks:
   - code_block: |-
       $.post("https://api.getshoutout.com.com/coreservice/contacts", {
-        "token": "YOUR_APP_KEY",
-        "title": "The Book Thief",
-        "score": 4.3
+        "user_id": "94777123456",
+        "name": "Duke",
+        "mobile_number": "94777123456",
+        "email": "duke@test.com"
       }, function(data) {
         alert(data);
       });

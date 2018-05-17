@@ -5,9 +5,12 @@ parameters:
   - name:
     content:
 content_markdown: |-
-  You need to be authenticated for all API requests. You can generate an API key in your developer dashboard.
+  You need to be authenticated for all API requests. You can generate an API key in our developer dashboard.
 
-  Add the API key to all requests as a GET parameter.
+  Add the API key to all requests as a header in the following format
+
+  Header name : Authorization
+  Header value : Apikey <YOUR_API_KEY>
 
   Nothing will work unless you include this API key
   {: .error}
@@ -17,13 +20,7 @@ left_code_blocks:
     language:
 right_code_blocks:
   - code_block: |2-
-       $.get("http://api.myapp.com/books/", { "token": "YOUR_APP_KEY"}, function(data) {
-         alert(data);
-       });
-    title: JQuery
-    language: javascript
-  - code_block: |2-
-       curl http://api.myapp.com/books?token=YOUR_APP_KEY
+       curl  -H "Authorization: Apikey <YOUR_API_KEY>" -X POST http://api.getshoutout.com/coreservice/messages
     title: Curl
     language: bash
 ---
