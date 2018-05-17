@@ -21,17 +21,22 @@ left_code_blocks:
 right_code_blocks:
   - code_block: |-
       {
-        "id": 3,
-        "title": "The Book Thief",
-        "score": 4.3,
-        "dateAdded": "5/1/2015"
+        "Items": [{
+          "rewardStatus": 1,
+          "updatedOn": "2018-05-17T10:47:02.982Z",
+          "rewardName": "Sample Reward",
+          "createdOn": "2018-05-01T10:40:36.841Z",
+          "points": 10,
+          "rewardId": "bc0c9680-59be-11e8-82ea-7154ab678cae",
+          "imageUrls": ["https://gallery.getshoutout.com/sample.jpeg"]
+        }],
+        "Count": 1
       }
     title: Response
     language: json
   - code_block: |-
       {
-        "error": true,
-        "message": "Invalid score"
+        "message": "Something went wrong"
       }
     title: Error
     language: json
