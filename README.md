@@ -1,86 +1,56 @@
-### Integrate with ShoutOUT
+# Aviator
 
-Integrating with ShoutOUT is very easy. You have two options.
+API documentation template for Jekyll. Browse through a [live demo](https://tangerine-lemon.cloudvent.net/).
+Start documenting your API with this configurable theme.
 
- 1. Use our client library to connect to our RESTful API
- 2. Directly connect to our RESTful API
+![Aviator template screenshot](images/_screenshot.png)
 
-### <a id="#cL"></a>SDKs & Client Libraries
+Aviator was made by [CloudCannon](http://cloudcannon.com/), the Cloud CMS for Jekyll.
 
-We maintain client libraries for several languages to connect to our RESTful API.
+Find more templates, themes and step-by-step Jekyll tutorials at [CloudCannon Academy](https://learn.cloudcannon.com/).
 
-- [NodeJS](https://www.npmjs.com/package/shoutout-sdk)
-- [PHP](https://packagist.org/packages/shoutoutlabs/shoutout-sdk)
-- [Java](https://github.com/shoutout-labs/shoutout-sdk-java)
+## Features
 
-### <a id="#rA"></a>RESTful API
+* Three column layout
+* Fully responsive
+* Full text search
+* Pre-styled components
+* Auto-generated navigation based on category
+* Optimised for editing in [CloudCannon](http://cloudcannon.com/)
+* SEO tags
+* Google Analytics
 
-We have a very simple RESTful API with mainly three endpoints. And all three endpoints receives request data as JSON objects.
+## Setup
 
- 1. Create or update contact(s)
- 2. Create activity
- 3. Send message
+1. Add your site and author details in `_config.yml`.
+2. Get a workflow going to see your site's output (with [CloudCannon](https://app.cloudcannon.com/) or Jekyll locally).
 
+## Develop
 
-#### <a id="#1"></a>Create or Update Contact(s)
+Aviator was built with [Jekyll](http://jekyllrb.com/) version 3.7.2, but should support newer versions as well.
 
-**Sample curl command**
+Install the dependencies with [Bundler](http://bundler.io/):
 
-```curl
-curl -X POST 
---header 'Content-Type: application/json' 
---header 'Accept: application/json' 
---header 'Authorization: Apikey <API_KEY>' 
--d '[{
-        user_id: '94777123456',
-        mobile_number: '94777123456',
-        email: 'duke@test.com',
-        name: 'Duke',
-        tags: ['lead']
-    }]' 'https://api.getshoutout.com/coreservice/contacts'
-```
+~~~bash
+$ bundle install
+~~~
 
-#### <a id="#2"></a>Create Activity
+Run `jekyll` commands through Bundler to ensure you're using the right versions:
 
-**Sample curl command**
+~~~bash
+$ bundle exec jekyll serve
+~~~
 
-```curl
-curl -X POST 
---header 'Content-Type: application/json' 
---header 'Accept: application/json' 
---header 'Authorization: Apikey <API_KEY>' 
--d '{
-        userId: '94777123456',
-        activityName: 'Sample Activity',
-        activityData: {
-            param1: 'val1',
-            param2: 'val2',
-            param3: 'val3'
-        }
-    }' 'https://api.getshoutout.com/coreservice/activities'
-```
+## Editing
 
-#### <a id="#3"></a>Send Message
+Aviator is already optimised for adding, updating and removing documentation pages in CloudCannon.
 
-**Sample curl command**
+### Usage
 
-```curl
-curl -X POST 
---header 'Content-Type: application/json' 
---header 'Accept: application/json' 
---header 'Authorization: Apikey <API_KEY>' 
--d '{
-        source: 'ShoutDEMO',
-        destinations: ['94777123456'],
-        content: {
-            sms: 'Sent via SMS Gateway'
-        },
-        transports: ['sms']
-    }' 'https://api.getshoutout.com/coreservice/messages'
-```
+* Each section is a different collection, this helps organise your content.
+* Set the order of the collections with the position field in collection configuration in `_config.yml`.
+* Set the order of the documents inside a collection by setting the position in front matter.
 
-### Questions or Problems ?
+### Search
 
-If you run into any difficulties or can't get something to work. Don't hesitate to contact us via <support@getshoutout.com>. We would love to help you out.
-
-<small>Copyright © 2017. ShoutOUT Labs. All Rights Reserved.</small>
+* Add `excluded_in_search: true` to any documentation page's front matter to exclude that page in the search results.
