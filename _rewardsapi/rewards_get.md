@@ -1,6 +1,6 @@
 ---
 title: /rewards
-position: 1.9
+position: 1.5
 type: get
 description: Get rewards
 parameters:

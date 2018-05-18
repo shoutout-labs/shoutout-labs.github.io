@@ -1,6 +1,6 @@
 ---
 title: /messages
-position: 1.1
+position: 1.2
 type: post
 description: Send SMS Message
 parameters:

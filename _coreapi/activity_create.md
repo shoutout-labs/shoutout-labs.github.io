@@ -1,6 +1,6 @@
 ---
 title: /activities
-position: 1.2
+position: 1.3
 type: post
 description: Create Activity
 parameters:
