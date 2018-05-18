@@ -61,7 +61,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  jekyll (= 3.7.2)
+  jekyll (= 3.7.3)
   jekyll-seo-tag (= 2.4.0)
   jekyll-sitemap (= 1.2.0)
 
