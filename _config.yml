@@ -28,6 +28,9 @@ collections:
   loyaltyapi:
     title: Loyalty API
     position: 5
+  rewardsapi:
+    title: Rewards API
+    position: 6
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
