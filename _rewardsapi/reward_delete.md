@@ -1,6 +1,6 @@
 ---
 title: /rewards/:id
-position: 1.8
+position: 1.4
 type: delete
 description: Delete reward
 parameters:

@@ -1,6 +1,6 @@
 ---
 title: /rewards
-position: 1.7
+position: 1.3
 type: put
 description: Update Reward
 parameters:

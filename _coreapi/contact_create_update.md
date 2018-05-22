@@ -1,6 +1,6 @@
 ---
 title: /contacts
-position: 1.1
+position: 1.2
 type: post
 description: Create or update contact(s)
 parameters:
