@@ -1,6 +1,6 @@
 ---
 title: /rewards
-position: 1.6
+position: 1.2
 type: post
 description: Create Reward
 parameters:
