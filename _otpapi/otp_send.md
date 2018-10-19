@@ -30,23 +30,30 @@ left_code_blocks:
         "content": {
           "sms": "Hi Duke! Your code is {{ "{{code" }}}}"
         }
-      }' 'https://getshoutout.com/v1/otp/send'
+      }' 'https://api.getshoutout.com/otpservice/otp/send'
     title: Curl
     language: bash
 right_code_blocks:
   - code_block: |-
       {
-        "id": 3,
-        "title": "The Book Thief",
-        "score": 4.3,
-        "dateAdded": "5/1/2015"
+	      "referenceId": "82b860c0-d386-11e8-b3a0-93e1cd5d3e04",
+	      "messageResult": {
+		      "status": "1001",
+		      "description": "submit success",
+		      "cost": 1,
+		      "responses": [{
+			      "destination": "94711234567",
+			      "reference_id": "82ec4200-d386-11e8-b097-a98325639673",
+			      "status": "1001",
+			      "cost": 1
+	    	  }]
+	      } 
       }
     title: Response
     language: json
   - code_block: |-
       {
-        "error": true,
-        "message": "Invalid score"
+        "message": "<error message>"
       }
     title: Error
     language: json

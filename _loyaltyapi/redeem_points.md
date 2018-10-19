@@ -16,33 +16,31 @@ content_markdown: |-
 left_code_blocks:
   - code_block: |-
       curl -X POST \
-        https://api.getshoutout.com/loyaltyservice/points \
+        https://api.getshoutout.com/loyaltyservice/points?action=redeem \
         -H 'authorization: Bearer <API_KEY>' \
         -H 'content-type: application/json' \
         -d '{
         "userId":"LOYAL-USER-001",
         "activityData":{
-        "points":-17,
-        "employee":"Smith",
-        "location":"Colombo"
+          "points":17,
+          "employee":"Smith",
+          "location":"Main Branch"
         }
       }'
     title: Curl
     language: bash
 right_code_blocks:
   - code_block: |-
-      {
-        "id": 3,
-        "title": "The Book Thief",
-        "score": 4.3,
-        "dateAdded": "5/1/2015"
+      { 
+        "points": 10,
+        "balance_points": 290,
+        "loyalty_id": "SPO-1"
       }
     title: Response
     language: json
   - code_block: |-
       {
-        "error": true,
-        "message": "Invalid score"
+        "message": "<error message>"
       }
     title: Error
     language: json

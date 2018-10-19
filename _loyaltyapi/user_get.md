@@ -22,17 +22,20 @@ left_code_blocks:
 right_code_blocks:
   - code_block: |2-
       {
-        "id": 3,
-        "title": "The Book Thief",
-        "score": 4.3,
-        "dateAdded": "5/1/2015"
+        "name": "John",
+        "loyalty_id": "LOYAL-USER-001",
+        "points": 17,
+        "tier": "Level 1",
+        "tier_points": 15,
+        "benefits": [
+          "10% Discount on all products"
+        ]
       }
     title: Response
     language: json
   - code_block: |2-
       {
-        "error": true,
-        "message": "Book doesn't exist"
+        "message": "<error message>"
       }
     title: Error
     language: json

@@ -20,7 +20,7 @@ left_code_blocks:
       -d '{
         "code": "ABCDE",
         "referenceId": "f437c171-2d08-48c8-a4a2-92a6aff7e853"
-      }' 'https://getshoutout.com/v1/otp/verify'
+      }' 'https://api.getshoutout.com/otpservice/otp/verify'
     title: Curl
     language: bash
 right_code_blocks:
