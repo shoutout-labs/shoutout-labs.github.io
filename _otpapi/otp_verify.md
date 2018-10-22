@@ -25,19 +25,18 @@ left_code_blocks:
     language: bash
 right_code_blocks:
   - code_block: |-
-      {
-	      "referenceId": "f437c171-2d08-48c8-a4a2-xxxxxxxx",
-	      "code": "87XXX",
-	      "statusCode": "1000",
-	      "description": "verification success"
-      }
+     {
+       "referenceId": "f437c171-2d08-48c8-a4a2-xxxxxxxx",
+       "code": "87XXX",
+       "statusCode": "1000",
+       "description": "verification success"
+     }
     title: Response
     language: json
   - code_block: |-
-      {
-        "error": true,
-        "message": "Invalid score"
-      }
+     {
+        "message": "<error message>"
+     }
     title: Error
     language: json
 ---
