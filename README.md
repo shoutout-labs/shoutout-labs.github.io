@@ -33,10 +33,6 @@ Install the dependencies with [Bundler](http://bundler.io/):
 
 ~~~bash
 $ bundle install
-
-Or specify the bundle path
-
-$ bundle install --path vendor/bundle
 ~~~
 
 Run `jekyll` commands through Bundler to ensure you're using the right versions:
