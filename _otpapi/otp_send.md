@@ -47,8 +47,8 @@ right_code_blocks:
            "status": "1001",
            "cost": 1
          }]
-        } 
-       }
+       } 
+      }
     title: Response
     language: json
   - code_block: |-
