@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Search | ShoutOUT</title>
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="Search" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="ShoutOUT API Reference" />
+<meta property="og:description" content="ShoutOUT API Reference" />
+<link rel="canonical" href="http://localhost:4000/search/" />
+<meta property="og:url" content="http://localhost:4000/search/" />
+<meta property="og:site_name" content="ShoutOUT" />
+<script type="application/ld+json">
+{"description":"ShoutOUT API Reference","@type":"WebPage","url":"http://localhost:4000/search/","headline":"Search","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+		<link rel="stylesheet" href="/css/style.css">
+		<link rel="icon" type="image/png" href="/favicon.png">
+
+		
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="/js/main.js"></script>
+	</head>
+	<body>
+		<header>
+			<h1>
+				<button type="button" class="open-nav" id="open-nav"></button>
+				<a href="/"><img src="/images/logo.svg" height="40" alt="ShoutOUT logo"></a>
+			</h1>
+
+			<form action="/search/" method="get">
+				<input type="text" name="q" id="search-input" placeholder="Search">
+				<input type="submit" value="Search" style="display: none;">
+			</form>
+
+			<div id="sidebar" class="sidebar">
+	
+	
+		
+	
+		
+			<section>
+				<h6>Documentation</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="/#documentationgetting_started">
+								Getting Started
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#documentationauthentication">
+								Authentication
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#documentationerrors">
+								Errors
+								
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
+				<h6>Lite API</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="/#liteapiintroduction">
+								Introduction
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#liteapimessage_send">
+								/messages
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#liteapimessage_status">
+								/logs/{id}
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
+				<h6>CRM API</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="/#coreapiintroduction">
+								Introduction
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#coreapicontact_create_update">
+								/contacts
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#coreapiactivity_create">
+								/activities
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
+				<h6>OTP API</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="/#otpapiintroduction">
+								Introduction
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#otpapiotp_send">
+								/otp/send
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#otpapiotp_verify">
+								/otp/verify
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
+				<h6>Loyalty API</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="/#loyaltyapiintroduction">
+								Introduction
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#loyaltyapienroll_user">
+								Enroll User
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#loyaltyapiuser_get">
+								/users/:id
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#loyaltyapicollect_points">
+								/points Collect
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#loyaltyapiredeem_points">
+								/points Redeem
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
+				<h6>Rewards API</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="/#rewardsapiintroduction">
+								Introduction
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#rewardsapireward_create">
+								/rewards
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#rewardsapireward_update">
+								/rewards
+								<span class="endpoint put"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#rewardsapireward_delete">
+								/rewards/:id
+								<span class="endpoint delete"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#rewardsapirewards_get">
+								/rewards
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+</div>
+
+
+			<p class="copyright">
+				<a href="https://cloudcannon.com/">
+					Template by CloudCannon
+				</a>
+			</p>
+		</header>
+		<div class="main">
+			<div class="search-page">
+	<h2>Search Results</h2>
+
+	<p><span id="search-process">Loading</span> results <span id="search-query-container" style="display: none;">for "<strong id="search-query"></strong>"</span></p>
+	<ul id="search-results"></ul>
+</div>
+
+<script>
+	window.data = {
+		
+			
+				
+					
+						
+						
+						"coreapi-activity-create": {
+							"id": "coreapi-activity-create",
+							"title": "/activities",
+							"category": "coreapi",
+							"description": "Create Activity",
+		  				"type": "post",
+							"url": "/#coreapiactivity_create",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"coreapi-contact-create-update": {
+							"id": "coreapi-contact-create-update",
+							"title": "/contacts",
+							"category": "coreapi",
+							"description": "Create or update contact(s)",
+		  				"type": "post",
+							"url": "/#coreapicontact_create_update",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"coreapi-introduction": {
+							"id": "coreapi-introduction",
+							"title": "Introduction",
+							"category": "coreapi",
+							"description": "",
+		  				"type": "",
+							"url": "/#coreapiintroduction",
+							"content": ""
+						}
+						
+					
+				
+			
+		
+			
+				
+					
+						,
+						
+						"documentation-authentication": {
+							"id": "documentation-authentication",
+							"title": "Authentication",
+							"category": "documentation",
+							"description": "",
+		  				"type": "",
+							"url": "/#documentationauthentication",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"documentation-errors": {
+							"id": "documentation-errors",
+							"title": "Errors",
+							"category": "documentation",
+							"description": "",
+		  				"type": "",
+							"url": "/#documentationerrors",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"documentation-getting-started": {
+							"id": "documentation-getting-started",
+							"title": "Getting Started",
+							"category": "documentation",
+							"description": "",
+		  				"type": "",
+							"url": "/#documentationgetting_started",
+							"content": ""
+						}
+						
+					
+				
+			
+		
+			
+				
+					
+						,
+						
+						"liteapi-introduction": {
+							"id": "liteapi-introduction",
+							"title": "Introduction",
+							"category": "liteapi",
+							"description": "",
+		  				"type": "",
+							"url": "/#liteapiintroduction",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"liteapi-message-send": {
+							"id": "liteapi-message-send",
+							"title": "/messages",
+							"category": "liteapi",
+							"description": "Send SMS Message",
+		  				"type": "post",
+							"url": "/#liteapimessage_send",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"liteapi-message-status": {
+							"id": "liteapi-message-status",
+							"title": "/logs/{id}",
+							"category": "liteapi",
+							"description": "Get log for message id",
+		  				"type": "get",
+							"url": "/#liteapimessage_status",
+							"content": ""
+						}
+						
+					
+				
+			
+		
+			
+				
+					
+						,
+						
+						"loyaltyapi-collect-points": {
+							"id": "loyaltyapi-collect-points",
+							"title": "/points Collect",
+							"category": "loyaltyapi",
+							"description": "Add points to user",
+		  				"type": "post",
+							"url": "/#loyaltyapicollect_points",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"loyaltyapi-enroll-user": {
+							"id": "loyaltyapi-enroll-user",
+							"title": "Enroll User",
+							"category": "loyaltyapi",
+							"description": "Enroll user to the loyalty program",
+		  				"type": "",
+							"url": "/#loyaltyapienroll_user",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"loyaltyapi-introduction": {
+							"id": "loyaltyapi-introduction",
+							"title": "Introduction",
+							"category": "loyaltyapi",
+							"description": "",
+		  				"type": "",
+							"url": "/#loyaltyapiintroduction",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"loyaltyapi-redeem-points": {
+							"id": "loyaltyapi-redeem-points",
+							"title": "/points Redeem",
+							"category": "loyaltyapi",
+							"description": "Redeem points from a user",
+		  				"type": "post",
+							"url": "/#loyaltyapiredeem_points",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"loyaltyapi-user-get": {
+							"id": "loyaltyapi-user-get",
+							"title": "/users/:id",
+							"category": "loyaltyapi",
+							"description": "Load user profile",
+		  				"type": "get",
+							"url": "/#loyaltyapiuser_get",
+							"content": ""
+						}
+						
+					
+				
+			
+		
+			
+				
+					
+						,
+						
+						"otpapi-introduction": {
+							"id": "otpapi-introduction",
+							"title": "Introduction",
+							"category": "otpapi",
+							"description": "",
+		  				"type": "",
+							"url": "/#otpapiintroduction",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"otpapi-otp-send": {
+							"id": "otpapi-otp-send",
+							"title": "/otp/send",
+							"category": "otpapi",
+							"description": "Send One Time Password",
+		  				"type": "post",
+							"url": "/#otpapiotp_send",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"otpapi-otp-verify": {
+							"id": "otpapi-otp-verify",
+							"title": "/otp/verify",
+							"category": "otpapi",
+							"description": "Send One Time Password",
+		  				"type": "post",
+							"url": "/#otpapiotp_verify",
+							"content": ""
+						}
+						
+					
+				
+			
+		
+			
+		
+			
+				
+					
+						,
+						
+						"rewardsapi-introduction": {
+							"id": "rewardsapi-introduction",
+							"title": "Introduction",
+							"category": "rewardsapi",
+							"description": "",
+		  				"type": "",
+							"url": "/#rewardsapiintroduction",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"rewardsapi-reward-create": {
+							"id": "rewardsapi-reward-create",
+							"title": "/rewards",
+							"category": "rewardsapi",
+							"description": "Create Reward",
+		  				"type": "post",
+							"url": "/#rewardsapireward_create",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"rewardsapi-reward-delete": {
+							"id": "rewardsapi-reward-delete",
+							"title": "/rewards/:id",
+							"category": "rewardsapi",
+							"description": "Delete reward",
+		  				"type": "delete",
+							"url": "/#rewardsapireward_delete",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"rewardsapi-reward-update": {
+							"id": "rewardsapi-reward-update",
+							"title": "/rewards",
+							"category": "rewardsapi",
+							"description": "Update Reward",
+		  				"type": "put",
+							"url": "/#rewardsapireward_update",
+							"content": ""
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"rewardsapi-rewards-get": {
+							"id": "rewardsapi-rewards-get",
+							"title": "/rewards",
+							"category": "rewardsapi",
+							"description": "Get rewards",
+		  				"type": "get",
+							"url": "/#rewardsapirewards_get",
+							"content": ""
+						}
+						
+					
+				
+			
+		
+	};
+</script>
+<script src="/js/lunr.min.js"></script>
+<script src="/js/search.js"></script>
+
+		</div>
+		<script>
+			document.getElementById("open-nav").addEventListener("click", function () {
+				document.body.classList.toggle("nav-open");
+			});
+		</script>
+	</body>
+</html>
