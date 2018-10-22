@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'jekyll', '3.7.3'
+gem 'jekyll', '3.7.4'
 gem 'tzinfo', '1.2.5' 
 gem 'tzinfo-data', '1.2018.5'
 
