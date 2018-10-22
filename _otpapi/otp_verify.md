@@ -19,17 +19,17 @@ left_code_blocks:
       --header 'Authorization: Apikey <API_KEY>'
       -d '{
         "code": "ABCDE",
-        "referenceId": "f437c171-2d08-48c8-a4a2-92a6aff7e853"
+        "referenceId": "f437c171-2d08-48c8-a4a2-xxxxxxxx"
       }' 'https://api.getshoutout.com/otpservice/otp/verify'
     title: Curl
     language: bash
 right_code_blocks:
   - code_block: |-
       {
-        "id": 3,
-        "title": "The Book Thief",
-        "score": 4.3,
-        "dateAdded": "5/1/2015"
+	      "referenceId": "f437c171-2d08-48c8-a4a2-xxxxxxxx",
+	      "code": "87XXX",
+	      "statusCode": "1000",
+	      "description": "verification success"
       }
     title: Response
     language: json

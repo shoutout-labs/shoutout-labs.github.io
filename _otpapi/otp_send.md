@@ -36,14 +36,14 @@ left_code_blocks:
 right_code_blocks:
   - code_block: |-
       {
-	      "referenceId": "82b860c0-d386-11e8-b3a0-93e1cd5d3e04",
+	      "referenceId": "f437c171-2d08-48c8-a4a2-xxxxxxxx",
 	      "messageResult": {
 		      "status": "1001",
 		      "description": "submit success",
 		      "cost": 1,
 		      "responses": [{
 			      "destination": "94711234567",
-			      "reference_id": "82ec4200-d386-11e8-b097-a98325639673",
+			      "reference_id": "82ec4200-d386-11e8-b097-xxxxxxxxxxx",
 			      "status": "1001",
 			      "cost": 1
 	    	  }]
