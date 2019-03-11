@@ -21,30 +21,36 @@ content_markdown: |-
   Create or update contact(s)
 left_code_blocks:
   - code_block: |-
-      $.post("https://api.getshoutout.com.com/coreservice/contacts", {
+      $.post("https://api.getshoutout.com.com/coreservice/contacts", [{
         "user_id": "94777123456",
         "name": "Duke",
         "mobile_number": "94777123456",
         "email": "duke@test.com"
-      }, function(data) {
+      }], function(data) {
         alert(data);
       });
     title: jQuery
     language: javascript
 right_code_blocks:
   - code_block: |-
-      {
-        "id": 3,
-        "title": "The Book Thief",
-        "score": 4.3,
-        "dateAdded": "5/1/2015"
-      }
+      [
+        {
+          "user_id": "94777123456",
+          "name": "Duke",
+          "mobile_number": "94777123456",
+          "email": "duke@test.com",
+          "country_code": "LK",
+          "country": "Sri Lanka",
+          "_mobile_number_valid": true,
+          "_email_valid": true,
+          "id": "xxxxxxxxxxxxxxxxxxxx"
+        }
+      ]
     title: Response
     language: json
   - code_block: |-
       {
-        "error": true,
-        "message": "Invalid score"
+        "message": "Authentication Failure!"
       }
     title: Error
     language: json
