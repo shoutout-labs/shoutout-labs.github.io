@@ -17,7 +17,7 @@ content_markdown: |-
   Create an activity for the user
 left_code_blocks:
   - code_block: |-
-      $.post("https://api.getshoutout.com.com/coreservice/activities", {
+      $.post("https://api.getshoutout.com/coreservice/activities", {
         "userId":"94777123456",
         "activityName":"Test Event",
         "activityData":{
@@ -28,6 +28,71 @@ left_code_blocks:
       });
     title: jQuery
     language: javascript
+
+  # - code_block: |-
+     
+  #   title: Curl
+  #   language: bash
+
+  - code_block: |-
+      
+      var activity = {
+          userId: '94777123456',
+          activityName: 'Sample Activity',
+          activityData: {
+             param1: 'val1',
+             param2: 'val2',
+             param3: 'val3'
+         }
+      };
+ 
+      client.createActivity(activity, (error, result) => {
+          if (error) {
+              console.error('error ', error);
+          } else {
+              console.log('result ', result);
+          }
+      });
+      
+    title: Node
+    language: javascript
+
+  - code_block: |-
+     
+       <?php
+
+        require __DIR__ . '/vendor/autoload.php';
+
+        use Swagger\Client\ShoutoutClient;
+
+        $apiKey = 'XXXXXXXXX.XXXXXXXXX.XXXXXXXXX';
+
+        $client = new ShoutoutClient($apiKey,true,false);
+
+
+        $activity = array(
+            'userId' => '94777123456',//Required. your account id
+            //arbitrary attributes
+            'activityName' => 'Sample Activity',
+            'activityData' => array(
+                'param1' => 'val1',
+                'param2' => 'val2',
+               'param3' => 'val3'
+            )
+        );
+
+        try {
+            $result = $client->createActivity($activity);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when creating activity ', $e->getMessage(), PHP_EOL;
+        }
+
+        ?>
+     
+    title: PHP
+    language: bash
+
 right_code_blocks:
   - code_block: |-
       {

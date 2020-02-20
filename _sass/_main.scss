@@ -41,7 +41,8 @@ body {
 	font-size: 1.8em;
 	line-height: 1.6;
 	font-weight: 400;
-	font-family: system, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Lucida Grande", sans-serif;
+	font-family: "Poppins",system, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Lucida Grande", sans-serif;
+	src: url("https://fonts.googleapis.com/css?family=Poppins&display=swap");
 	background: #fbfbfb;
 
 	&.nav-open {

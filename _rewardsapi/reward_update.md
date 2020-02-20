@@ -18,21 +18,57 @@ content_markdown: |-
 
   Points will be redeemed from the user's loyalty account
 left_code_blocks:
+
   - code_block: |-
       curl -X POST \
-        https://api.getshoutout.com/loyaltyservice/points \
+        https://api.getshoutout.com/loyaltyservice/rewards/
         -H 'authorization: Bearer <API_KEY>' \
         -H 'content-type: application/json' \
         -d '{
-        "userId":"LOYAL-USER-001",
-        "activityData":{
-        "points":-17,
-        "employee":"Smith",
-        "location":"Colombo"
-        }
+         "_id":"bc0c9680-59be-11e8-82ea-7154ab678cae",
+         "metadata" : {
+           "amountPerRedemptionSeasonal" :{
+             "value" : 1,
+             "searchFromDate" : "2019-01-01",
+             "searchToDate" : "2020-02-10"
+           },
+           "digitalRewardInfo" :{
+             "type" : "digital"
+           }
+         }
       }'
     title: Curl
     language: bash
+
+  - code_block: |-
+       $.post("https://api.getshoutout.com/loyaltyservice/rewards/", [{
+         "_id":"bc0c9680-59be-11e8-82ea-7154ab678cae",
+         "metadata" : {
+           "amountPerRedemptionSeasonal" :{
+             "value" : 1,
+             "searchFromDate" : "2019-01-01",
+             "searchToDate" : "2020-02-10"
+           },
+           "digitalRewardInfo" :{
+             "type" : "digital"
+           }
+         }
+        }], function(data) {
+        alert(data);
+        });
+    title: JQuery
+    language: javascript
+
+  # - code_block: |-
+     
+  #   title: Node
+  #   language: javascript
+
+  # - code_block: |-
+     
+  #   title: PHP
+  #   language: bash
+
 right_code_blocks:
   - code_block: |-
       {

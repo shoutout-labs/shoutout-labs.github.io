@@ -10,6 +10,7 @@ content_markdown: |-
 
   Reward with the id mentioned on the url will be deleted
 left_code_blocks:
+ 
   - code_block: |-
       curl -X DELETE \
         https://api.getshoutout.com/loyaltyservice/rewards/bc0c9680-59be-11e8-82ea-7154ab678cae \
@@ -18,6 +19,27 @@ left_code_blocks:
       }'
     title: Curl
     language: bash
+
+  - code_block: |-
+       $.post("https://api.getshoutout.com/loyaltyservice/rewards/bc0c9680-59be-11e8-82ea-7154ab678cae", [{
+        
+        }], function(data) {
+        alert(data);
+        });
+    title: JQuery
+    language: javascript
+
+  # - code_block: |-
+     
+  #   title: Node
+  #   language: javascript
+
+  # - code_block: |-
+     
+  #   title: PHP
+  #   language: bash
+
+
 right_code_blocks:
   - code_block: |-
       {}

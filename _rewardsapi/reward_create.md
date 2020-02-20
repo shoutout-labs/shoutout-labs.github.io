@@ -16,21 +16,77 @@ content_markdown: |-
 
   Points will be redeemed from the user's loyalty account
 left_code_blocks:
+
   - code_block: |-
       curl -X POST \
-        https://api.getshoutout.com/loyaltyservice/points \
+        https://api.getshoutout.com/loyaltyservice/rewards/
         -H 'authorization: Bearer <API_KEY>' \
         -H 'content-type: application/json' \
         -d '{
-        "userId":"LOYAL-USER-001",
-        "activityData":{
-        "points":-17,
-        "employee":"Smith",
-        "location":"Colombo"
-        }
-      }'
+        "name": "rewards",
+        "description" : "",
+        "type": "voucher",
+        "userRedeemable": "false",
+        "points": 1,
+        "status" : 2,
+        "imageUrls": [
+        "https://gallery.getshoutout.com/sample.jpeg"
+        ],
+        "metadata": { 
+          "dailyRedemptionLimit":2,
+          "amountPerRedemption":2,
+          "amountPerRedemptionSeasonal": {
+            "value": 2,
+            "searchFromDate": "2019-09-09",
+            "searchToDate": "2020-02-02"
+            },
+           "digitalRewardInfo" :{
+        	    "type":""
+             }
+          }
+        }'
     title: Curl
     language: bash
+
+  - code_block: |-
+      $.post(" https://api.getshoutout.com/loyaltyservice/rewards/ ", {
+        "name": "rewards",
+        "description" : "",
+        "type": "voucher",
+        "userRedeemable": "false",
+        "points": 1,
+        "status" : 2,
+        "imageUrls": [
+        "https://gallery.getshoutout.com/sample.jpeg"
+        ],
+        "metadata": { 
+          "dailyRedemptionLimit":2,
+          "amountPerRedemption":2,
+          "amountPerRedemptionSeasonal": {
+            "value": 2,
+            "searchFromDate": "2019-09-09",
+            "searchToDate": "2020-02-02"
+            },
+           "digitalRewardInfo" :{
+        	    "type":""
+             }
+          }
+        }', function(data) {
+      alert(data);
+      });
+    title: JQuery
+    language: javascript
+
+  # - code_block: |-
+      
+  #   title: Node
+  #   language: javascript
+
+  # - code_block: |-
+      
+  #   title: PHP
+  #   language: bash
+
 right_code_blocks:
   - code_block: |-
       {

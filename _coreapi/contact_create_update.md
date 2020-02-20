@@ -20,8 +20,23 @@ content_markdown: |-
 
   Create or update contact(s)
 left_code_blocks:
+
   - code_block: |-
-      $.post("https://api.getshoutout.com.com/coreservice/contacts", [{
+        curl -X POST 
+        --header 'Content-Type: application/json' 
+        --header 'Accept: application/json' 
+        --header 'Authorization: Apikey <API_KEY>' 
+        -d '{
+         "user_id": "94777123456",
+        "name": "Duke",
+        "mobile_number": "94777123456",
+        "email": "duke@test.com"
+        }' 'https://api.getshoutout.com/coreservice/contacts'
+    title: Curl
+    language: bash
+    
+  - code_block: |-
+      $.post("https://api.getshoutout.com/coreservice/contacts", [{
         "user_id": "94777123456",
         "name": "Duke",
         "mobile_number": "94777123456",
@@ -31,6 +46,66 @@ left_code_blocks:
       });
     title: jQuery
     language: javascript
+
+
+  - code_block: |-
+    
+        var contacts = [{
+             user_id: '94777123456',
+              mobile_number: '94777123456',
+              email: 'duke@test.com',
+              name: 'Duke',
+              tags: ['lead']
+              }];
+ 
+        client.createContacts(contacts, (error, result) => {
+            if (error) {
+               console.error('error ', error);
+             } else {
+                console.log('result ', result);
+            }
+        });
+      
+    title: Node
+    language: javascript
+
+  - code_block: |-
+      
+        <?php
+
+        require __DIR__ . '/vendor/autoload.php';
+
+        use Swagger\Client\ShoutoutClient;
+
+        $apiKey = 'XXXXXXXXX.XXXXXXXXX.XXXXXXXXX';
+
+        $client = new ShoutoutClient($apiKey,true,false);
+
+
+        $contact = array(
+            'mobile_number' => '94777123456',//Required if not specified user_id
+            'user_id' => '94777123456',//Optional. if specified, this will be used to generate the contact id, otherwise         mobile_number will be used to generate contact id
+            //arbitrary attributes
+            'email' => 'duke@test.com',
+            'tags' => ['lead'],
+            'name' => 'Duke'
+        );
+            $contacts = array($contact);
+
+        try {
+            $result = $client->createContacts($contacts);
+            print_r($result);
+        } catch (Exception $e) {
+            echo 'Exception when creating contacts ', $e->getMessage(), PHP_EOL;
+        }
+
+        ?>
+      
+      
+    title: PHP
+    language: bash
+
+
 right_code_blocks:
   - code_block: |-
       [
