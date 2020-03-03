@@ -14,6 +14,7 @@ content_markdown: |-
 
   Points will be calculated by the system and added to the user accordingly
 left_code_blocks:
+
   - code_block: |-
       curl -X POST \
         https://api.getshoutout.com/loyaltyservice/points?action=collect \
@@ -30,6 +31,32 @@ left_code_blocks:
       }'
     title: Curl
     language: bash
+
+  - code_block: |-
+       $.post("https://api.getshoutout.com/loyaltyservice/points?action=collect", [{
+        "user_id": "LOYAL-USER-001",
+        "activityData":{
+          "bill":2350.00,
+          "bill_number":"INV-001",
+          "employee":"Smith",
+          "location":"Main Branch"
+        }
+       }], function(data) {
+        alert(data);
+       });
+    title: JQuery
+    language: javascript
+
+  # - code_block: |-
+      
+  #   title: Node
+  #   language: javascript
+
+  # - code_block: |-
+      
+  #   title: PHP
+  #   language: bash
+
 right_code_blocks:
   - code_block: |-
       {

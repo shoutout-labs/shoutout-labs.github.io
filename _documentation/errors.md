@@ -1,6 +1,6 @@
 ---
 title: Errors
-position: 3
+position: 1.6
 parameters:
   - name:
     content:
