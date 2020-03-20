@@ -12,6 +12,7 @@ content_markdown: |-
 
   If valid successful response will be received
 left_code_blocks:
+
   - code_block: |-
       curl -X POST
       --header 'Content-Type: application/json'
@@ -20,9 +21,30 @@ left_code_blocks:
       -d '{
         "code": "ABCDE",
         "referenceId": "f437c171-2d08-48c8-a4a2-xxxxxxxx"
-      }' 'https://api.getshoutout.com/otpservice/otp/verify'
+      }' 'https://api.getshoutout.com/otpservice/verify'
     title: Curl
     language: bash
+
+  - code_block: |-
+       $.post("https://api.getshoutout.com/otpservice/verify", [{
+        "code": "ABCDE",
+        "referenceId": "f437c171-2d08-48c8-a4a2-xxxxxxxx",
+       }], function(data) {
+        alert(data);
+       });
+    title: JQuery
+    language: javascript
+
+  # - code_block: |-
+     
+  #   title: Node
+  #   language: javascript
+
+  # - code_block: |-
+     
+  #   title: PHP
+  #   language: bash
+
 right_code_blocks:
   - code_block: |-
      {

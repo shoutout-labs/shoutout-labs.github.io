@@ -1,6 +1,6 @@
 ---
 title: /logs/{id}
-position: 1.3
+position: 1.5
 type: get
 description: Get log for message id
 parameters:
@@ -11,13 +11,7 @@ content_markdown: |-
   {: .warning}
 
 left_code_blocks:
-  - code_block: |-
-      $.get("https://api.getshoutout.com.com/coreservice/logs/{id}", {
-      }, function(data) {
-        alert(data);
-      });
-    title: jQuery
-    language: javascript
+
   - code_block: |-
       curl -X GET 
       --header 'Content-Type: application/json' 
@@ -26,6 +20,27 @@ left_code_blocks:
       'https://api.getshoutout.com/coreservice/logs/{id}'
     title: Curl
     language: bash
+
+  - code_block: |-
+      $.get("https://api.getshoutout.com/coreservice/logs/{id}", {
+      }, function(data) {
+        alert(data);
+      });
+    title: jQuery
+    language: javascript
+  
+
+  # - code_block: |-
+      
+  #   title: Node
+  #   language: bash
+
+  # - code_block: |-
+      
+  #   title: PHP
+  #   language: bash
+ 
+
 right_code_blocks:
   - code_block: |-
       {

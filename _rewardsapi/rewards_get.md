@@ -10,6 +10,7 @@ content_markdown: |-
 
   Points will be redeemed from the user's loyalty account
 left_code_blocks:
+ 
   - code_block: |-
       curl -X GET \
         https://api.getshoutout.com/loyaltyservice/rewards \
@@ -18,7 +19,28 @@ left_code_blocks:
       }'
     title: Curl
     language: bash
+
+  - code_block: |-
+       $.get("https://api.getshoutout.com/loyaltyservice/rewards ", [{
+        
+        }], function(data) {
+        alert(data);
+        });
+    title: JQuery
+    language: javascript
+
+  # - code_block: |-
+      
+  #   title: Node
+  #   language: javascript
+
+  # - code_block: |-
+      
+  #   title: PHP
+  #   language: bash
+
 right_code_blocks:
+
   - code_block: |-
       {
         "Items": [{

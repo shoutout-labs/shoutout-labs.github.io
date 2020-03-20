@@ -12,6 +12,18 @@ content_markdown: |-
 
   Returns the profile of the user
 left_code_blocks:
+
+  - code_block: |-
+      curl -X GET 
+        --header 'Content-Type: application/json' 
+        --header 'Accept: application/json' 
+        --header 'Authorization: Apikey <API_KEY>' 
+        -d '{
+         
+        }' 'https://api.getshoutout.com/loyaltyservice/users/:id'
+    title: Curl
+    language: bash
+
   - code_block: |-
       $.get("https://api.getshoutout.com/loyaltyservice/users/:id", {
       }, function(data) {
@@ -19,6 +31,20 @@ left_code_blocks:
       });
     title: jQuery
     language: javascript
+
+ 
+
+  # - code_block: |-
+     
+  #   title: Node
+  #   language: javascript
+
+  # - code_block: |-
+     
+  #   title: PHP
+  #   language: bash
+
+
 right_code_blocks:
   - code_block: |2-
       {
