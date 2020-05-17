@@ -26,12 +26,12 @@ left_code_blocks:
         --header 'Content-Type: application/json' 
         --header 'Accept: application/json' 
         --header 'Authorization: Apikey <API_KEY>' 
-        -d '{
+        -d '[{
          "user_id": "94777123456",
         "name": "Duke",
         "mobile_number": "94777123456",
         "email": "duke@test.com"
-        }' 'https://api.getshoutout.com/coreservice/contacts'
+        }]' 'https://api.getshoutout.com/coreservice/contacts'
     title: Curl
     language: bash
     
