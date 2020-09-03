@@ -1,12 +1,16 @@
 openapi: 3.0.2
 info:
-    title: Shoutout Enterprise Loyalty Admin
+    title: Shoutout Enterprise API
     version: 1.0.0
-    description: Shoutout loyalty for enterprises
+    description: Shoutout for enterprises
     contact:
         name: ShoutOUT Labs
         url: 'https://getshoutout.com'
         email: support@getshoutout.com
+    x-logo:
+        url: 'https://developers.getshoutout.com/images/logo.svg'
+        backgroundColor: '#394f5a'
+        altText: Shoutout logo
 servers:
     -
         url: 'https://api.getshoutout.com'
