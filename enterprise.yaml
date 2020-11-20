@@ -1,27 +1,123 @@
+---
 openapi: 3.0.2
 info:
-    title: Shoutout Enterprise Loyalty API
-    version: 1.0.0
-    description: Shoutout for enterprises
+    title: Shoutout Enterprise Loyalty Admin
+    description: Shoutout loyalty for enterprises
     contact:
         name: ShoutOUT Labs
-        url: 'https://getshoutout.com'
+        url: https://getshoutout.com
         email: support@getshoutout.com
-    x-logo:
-        url: 'https://developers.getshoutout.com/images/logo.svg'
-        backgroundColor: '#394f5a'
-        altText: Shoutout logo
+    version: 1.0.0
 servers:
-    -
-        url: 'https://api.getshoutout.com/loyaltyservice2'
-        description: ShoutOUT API
+    - url: /
+tags:
+    - name: Customers
+      description: 'Customer is a loyalty user which is the primary entity in the loyalty platform. '
+    - name: Rewards
+      description: 'Digital, Voucher based rewards which can be redeemed for redeemable points. '
+    - name: Products
+      description: Create, update, delete and get products. Products are the list of products in the Point of Sales (PoS) or e-commerce application.
+    - name: Config
+      description: Loyalty configuration updates. Set points, rewards related and product based points, tiers configurations.
+    - name: Points
+      description: "Points is a numeric score that is issued to the customer as a measure of their loyalty with the business. Points collected for bill values, are calculated based on a pre-defined conversion rate. Points collected directly via the points amount is directly accumulated to the total points. \n\nPoints can be directly redeemed by specifying the points amount."
+    - name: Transactions
+      description: Transactions are the point collections and point redemptions of the customers
+    - name: Activities
+      description: Activities are the actions performed by the customers. Loyalty platform automatically generates activities for the major loyalty events like registration, points collection and redemption, reward redemption etc
 paths:
+    /customers:
+        summary: Customer management
+        get:
+            tags:
+                - Customers
+            summary: Get customers
+            description: Get the list of loyalty customers.
+            operationId: getCustomers
+            parameters:
+                - name: skip
+                  in: query
+                  description: Number of records to skip
+                  required: false
+                  style: form
+                  explode: true
+                  schema:
+                      type: number
+                - name: limit
+                  in: query
+                  description: Number of records to be returned in the response. Defult is 10
+                  required: false
+                  style: form
+                  explode: true
+                  schema:
+                      type: number
+            responses:
+                "200":
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/CustomerCreate'
+                            examples:
+                                Example:
+                                    value:
+                                        - loyalty_id: some text
+                                          name: some text
+                                          points: 57.32
+                                          tier: some text
+                                          tier_points: 77.17
+                                        - loyalty_id: some text
+                                          name: some text
+                                          points: 56.08
+                                          tier: some text
+                                          tier_points: 70.6
+            security:
+                - APIKey: []
+        post:
+            tags:
+                - Customers
+            summary: Create customer
+            description: Create customer with pre-defined and user defined attributes
+            operationId: createCustomer
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/CustomerCreate'
+                        examples:
+                            Example:
+                                value:
+                                    loyalty_id: some text
+                                    name: some text
+                                    mobile_number: some text
+                                    email: some text
+                required: true
+            responses:
+                "201":
+                    description: Customer created
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/CustomerCreate'
+                            examples:
+                                Example:
+                                    value:
+                                        loyalty_id: some text
+                                        name: some text
+                                        points: 3.8
+                                        tier: some text
+                                        tier_points: 30.44
     /rewards:
         get:
             tags:
                 - Rewards
+            summary: Get rewards
+            description: Get list of all rewards
             responses:
-                '200':
+                "200":
+                    description: return rewards as an array
                     content:
                         application/json:
                             schema:
@@ -31,40 +127,39 @@ paths:
                             examples:
                                 reward response:
                                     value:
-                                        -
-                                            _id: 5c7cb58fe5cd6a27acff234
-                                            name: Reward1
-                                            description: description
-                                            type: voucher
-                                            isRedeemable: true
-                                            points: 2500
-                                            status: 0
-                                            imageUrls:
-                                                - 'https://getshoutout.com/casx.jpg'
-                                            metadata:
-                                                totalCount: 0
-                                                usedCount: 0
-                                                amountPerRedemption: 0
-                                                countPerRedemption: 1
-                                                couponResult:
-                                                    fieldCount: 0
-                                                    affectedRows: 1
-                                                    insertId: 0
-                                                    serverStatus: 2
-                                                    warningCount: 0
-                                                    message: ''
-                                                    protocol41: true
-                                                    changedRows: 0
-                                            ownerId: '43'
-                                            createdBy: '43'
-                                            createdOn: '2019-02-25T05:09:18.628Z'
-                    description: return rewards as an array
+                                        - _id: 5c7cb58fe5cd6a27acff234
+                                          name: Reward1
+                                          description: description
+                                          type: voucher
+                                          isRedeemable: true
+                                          points: 2500
+                                          status: 0
+                                          imageUrls:
+                                              - https://getshoutout.com/casx.jpg
+                                          metadata:
+                                              totalCount: 0
+                                              usedCount: 0
+                                              amountPerRedemption: 0
+                                              countPerRedemption: 1
+                                              couponResult:
+                                                  fieldCount: 0
+                                                  affectedRows: 1
+                                                  insertId: 0
+                                                  serverStatus: 2
+                                                  warningCount: 0
+                                                  message: ""
+                                                  protocol41: true
+                                                  changedRows: 0
+                                          ownerId: 43
+                                          createdBy: 43
+                                          createdOn: 2019-02-25T05:09:18.628Z
             security:
-                -
-                    APIKey: []
-            summary: Get rewards
-            description: Get list of all rewards
+                - APIKey: []
         post:
+            tags:
+                - Rewards
+            summary: Create reward
+            description: Create a new reward
             requestBody:
                 content:
                     application/json:
@@ -74,10 +169,9 @@ paths:
                             create redeemable voucher reward:
                                 value:
                                     imageUrls:
-                                        - >-
-                                            https://s3.amazonaws.com/gallery.getshoutout.com/images/43/9656b64d-76e0-4e12-82fc-6fec4c6b0a68.png
+                                        - https://s3.amazonaws.com/gallery.getshoutout.com/images/43/9656b64d-76e0-4e12-82fc-6fec4c6b0a68.png
                                     name: Reward 2
-                                    points: '100'
+                                    points: 100
                                     type: voucher
                                     metadata:
                                         amountPerRedemptionSeasonal: []
@@ -85,117 +179,589 @@ paths:
                                         dailyRedemptionLimit: -1
                                     userRedeemable: true
                 required: true
-            tags:
-                - Rewards
             responses:
-                '201':
+                "201":
                     content:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/Reward'
-                            examples:
-                                Sample:
-                                    value:
-                                        _id: some text
-                                        imageUrls:
-                                            - some text
-                                            - some text
-                                        name: some text
-                                        points: 73
-                                        type: some text
-                                        metadata: {}
-                                        userRedeemable: true
-                                        status: 71
-                    description: Created Reward
             security:
-                -
-                    APIKey: []
-            summary: Create reward
-            description: Create a new reward
-    '/rewards/{rewardId}':
+                - APIKey: []
+    /rewards/{rewardId}:
         get:
             tags:
                 - Rewards
+            summary: Get reward
+            description: Get a reward by reward id
+            parameters:
+                - name: rewardId
+                  in: path
+                  description: reward id
+                  required: true
+                  style: simple
+                  explode: false
+                  schema:
+                      type: string
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/Reward'
-                            examples:
-                                Sample:
-                                    value:
-                                        _id: some text
-                                        imageUrls:
-                                            - some text
-                                            - some text
-                                        name: some text
-                                        points: 86
-                                        type: some text
-                                        metadata: {}
-                                        userRedeemable: true
-                                        status: 67
-                    description: Reward
             security:
-                -
-                    APIKey: []
-            summary: Get reward
-            description: Get a reward by reward id
+                - APIKey: []
         put:
+            tags:
+                - Rewards
+            summary: Update reward
+            description: Update a reward by reward id
+            parameters:
+                - name: rewardId
+                  in: path
+                  description: reward id
+                  required: true
+                  style: simple
+                  explode: false
+                  schema:
+                      type: string
             requestBody:
                 content:
                     application/json:
                         schema:
                             $ref: '#/components/schemas/Reward'
                 required: true
-            tags:
-                - Rewards
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/Reward'
-                            examples:
-                                Sample:
-                                    value:
-                                        _id: some text
-                                        imageUrls:
-                                            - some text
-                                            - some text
-                                        name: some text
-                                        points: 25
-                                        type: some text
-                                        metadata: {}
-                                        userRedeemable: true
-                                        status: 84
-                    description: Updated Reward
             security:
-                -
-                    APIKey: []
-            summary: Update reward
-            description: Update a reward by reward id
+                - APIKey: []
         delete:
             tags:
                 - Rewards
-            responses:
-                '200':
-                    description: empty response
-            security:
-                -
-                    APIKey: []
             summary: Delete reward
             description: Delete a reward by reward id
-        parameters:
-            -
-                name: rewardId
-                description: reward id
-                schema:
-                    type: string
-                in: path
+            parameters:
+                - name: rewardId
+                  in: path
+                  description: reward id
+                  required: true
+                  style: simple
+                  explode: false
+                  schema:
+                      type: string
+            responses:
+                "200":
+                    description: empty response
+            security:
+                - APIKey: []
+    /customers/{customerId}:
+        get:
+            tags:
+                - Customers
+            summary: Get customer
+            description: Get a single customer profile via the loyalty id
+            operationId: getCustomer
+            parameters:
+                - name: customerId
+                  in: path
+                  required: true
+                  style: simple
+                  explode: false
+                  schema:
+                      type: string
+            responses:
+                "200":
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/CustomerCreate'
+                            examples:
+                                Example:
+                                    value:
+                                        loyalty_id: some text
+                                        name: some text
+                                        points: 87.68
+                                        tier: some text
+                                        tier_points: 34.99
+                "404":
+                    description: Customer not found
+            security:
+                - APIKey: []
+        put:
+            tags:
+                - Customers
+            summary: Update customer
+            description: Update customer details.
+            operationId: updateCustomer
+            parameters:
+                - name: customerId
+                  in: path
+                  required: true
+                  style: simple
+                  explode: false
+                  schema:
+                      type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/CustomerCreate'
+                        examples:
+                            Example:
+                                value:
+                                    name: some text
                 required: true
+            responses:
+                "200":
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/CustomerCreate'
+                            examples:
+                                Example:
+                                    value:
+                                        loyalty_id: some text
+                                        name: some text
+                                        points: 21.82
+                                        tier: some text
+                                        tier_points: 14.59
+        delete:
+            tags:
+                - Customers
+            summary: De-activate customer
+            description: De-activate a csutomer as he/she is no longer be able to interact with the loyalty program
+            operationId: deactivateCustomer
+            parameters:
+                - name: customerId
+                  in: path
+                  required: true
+                  style: simple
+                  explode: false
+                  schema:
+                      type: string
+            responses:
+                "200":
+                    description: Success
+    /products:
+        summary: Get list of products, create a new product
+        description: Get list of products, create a new product
+        get:
+            tags:
+                - Products
+            summary: Get products
+            description: Get list of products
+            parameters:
+                - name: skip
+                  in: query
+                  description: Number of records to skip
+                  required: false
+                  style: form
+                  explode: true
+                  schema:
+                      type: integer
+                  examples:
+                      Example skip:
+                          value: 0
+                - name: limit
+                  in: query
+                  description: Number of records to be returned in the response. Defult is 10
+                  required: false
+                  style: form
+                  explode: true
+                  schema:
+                      type: integer
+                  examples:
+                      Example limit:
+                          value: 100
+            responses:
+                "200":
+                    description: products list
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/Product'
+            security:
+                - APIKey: []
+        post:
+            tags:
+                - Products
+            summary: Create product
+            description: Create a new product
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/Product'
+                required: true
+            responses:
+                "201":
+                    description: Product create/update response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Product'
+            security:
+                - APIKey: []
+    /products/{productId}:
+        description: Get, update and delete a product by id
+        get:
+            tags:
+                - Products
+            summary: Get product
+            description: Get the product by product id
+            parameters:
+                - name: productId
+                  in: path
+                  description: product id
+                  required: true
+                  style: simple
+                  explode: false
+                  schema:
+                      type: string
+            responses:
+                "200":
+                    description: Product create/update response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Product'
+            security:
+                - APIKey: []
+        put:
+            tags:
+                - Products
+            summary: Update product
+            description: Update the product by product id
+            parameters:
+                - name: productId
+                  in: path
+                  description: product id
+                  required: true
+                  style: simple
+                  explode: false
+                  schema:
+                      type: string
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/Product'
+                required: true
+            responses:
+                "200":
+                    description: Product create/update response
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Product'
+            security:
+                - APIKey: []
+        delete:
+            tags:
+                - Products
+            summary: Delete product
+            description: Delete the product by product id
+            parameters:
+                - name: productId
+                  in: path
+                  description: product id
+                  required: true
+                  style: simple
+                  explode: false
+                  schema:
+                      type: string
+            responses:
+                "200":
+                    description: empty response
+            security:
+                - APIKey: []
+    /transactions:
+        get:
+            tags:
+                - Transactions
+            summary: Get transactions
+            description: Get a list of loyalty transactions
+            operationId: getTransactions
+            parameters:
+                - name: skip
+                  in: query
+                  description: Number of transactions to skip. Default is 0
+                  required: false
+                  style: form
+                  explode: true
+                  schema:
+                      type: number
+                - name: limit
+                  in: query
+                  description: Number of transactions to limit. Default is 10
+                  required: false
+                  style: form
+                  explode: true
+                  schema:
+                      type: number
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/Transaction'
+                            examples:
+                                Example:
+                                    value:
+                                        - id: some text
+                                          points: 75.75
+                                          bill: 51.07
+                                          transactionName: COLLECT_POINTS
+                                          tierPoints: 72.76
+                                          loyaltyId: some text
+                                          customerId: some text
+                                          billNumber: some text
+                                        - id: some text
+                                          points: 32.66
+                                          transactionName: REDEEM_POINTS
+                                          tierPoints: 27.85
+                                          loyaltyId: some text
+                                          customerId: some text
+    /config:
+        get:
+            tags:
+                - Config
+            summary: Get configuration
+            description: Get the current configuration
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Configuration'
+            security:
+                - APIKey: []
+        put:
+            tags:
+                - Config
+            summary: Update configuration
+            description: Update existing configuration. Can be used to update points, rewards and product based points, tiers based configurations.
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/Configuration'
+                required: true
+            responses:
+                "200":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Configuration'
+            security:
+                - APIKey: []
+        post:
+            tags:
+                - Config
+            summary: Create configuration
+            description: Create a new configuration.
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/Configuration'
+                required: true
+            responses:
+                "201":
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Configuration'
+            security:
+                - APIKey: []
+        delete:
+            tags:
+                - Config
+            summary: Delete configuration
+            description: Delete current configuration.
+            responses:
+                "200":
+                    description: Empty response
+            security:
+                - APIKey: []
+    /activities:
+        get:
+            tags:
+                - Activities
+            summary: Get activities
+            operationId: getActivities
+            parameters:
+                - name: skip
+                  in: query
+                  description: Number of activities to skip. Default is 0
+                  required: false
+                  style: form
+                  explode: true
+                  schema:
+                      type: number
+                - name: limit
+                  in: query
+                  description: Number of activities to limit. Default is 10
+                  required: false
+                  style: form
+                  explode: true
+                  schema:
+                      type: number
+            responses:
+                "200":
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                type: array
+                                items:
+                                    $ref: '#/components/schemas/Activity'
+                            examples:
+                                Example:
+                                    value:
+                                        - userId: some text
+                                          activityName: some text
+                                          activityData: {}
+                                        - userId: some text
+                                          activityName: some text
+                                          activityData: {}
+            security:
+                - APIKey: []
+        post:
+            tags:
+                - Activities
+            summary: Create activity
+            operationId: createActivity
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/Activity'
+                        examples:
+                            Example:
+                                value:
+                                    userId: some text
+                                    activityName: some text
+                                    activityData: {}
+                required: true
+            responses:
+                "201":
+                    description: Created
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Activity'
+                            examples:
+                                Example:
+                                    value:
+                                        userId: some text
+                                        activityName: some text
+                                        activityData: {}
+    /pointscollect:
+        post:
+            tags:
+                - Points
+            summary: Collect points
+            description: This method can be used for point collection
+            operationId: collectPoints
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/PointsCollect'
+                        examples:
+                            Collect points for bill value:
+                                value:
+                                    userId: some text
+                                    activityData:
+                                        bill: 47.79
+                                        bill_number: some text
+                                        employee: some text
+                                        location: some text
+                            Collect points for fixed amount:
+                                value:
+                                    userId: some text
+                                    activityData:
+                                        employee: some text
+                                        location: some text
+                                        points: 45
+                required: true
+            responses:
+                "200":
+                    description: Points collected
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/PointsCollectResponse'
+                            examples:
+                                Success:
+                                    value:
+                                        points: 14.22
+                                        loyalty_id: some text
+                                        total_points: 60.27
+                                        tier_points: 7.69
+                                        user_type: some text
+            security:
+                - APIKey: []
+    /pointsredeem:
+        post:
+            tags:
+                - Points
+            summary: Redeem points
+            description: This method can be used for point redemption
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/PointsRedeem'
+                        examples:
+                            Redeem points:
+                                value:
+                                    userId: some text
+                                    activityData:
+                                        bill_number: some text
+                                        employee: some text
+                                        location: some text
+                                        points: 57.88
+                required: true
+            responses:
+                "200":
+                    description: Success
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/PointsRedeemResponse'
+            security:
+                - APIKey: []
     /points:
         post:
+            tags:
+                - Points
+            summary: Collect or redeem points
+            description: This method can be used for both points earning and redemption
+            operationId: updatePoints
+            parameters:
+                - name: action
+                  in: query
+                  description: |
+                      Point collection or redemption
+                  required: true
+                  style: form
+                  explode: true
+                  schema:
+                      type: string
+                      enum:
+                          - collect
+                          - redeem
             requestBody:
                 content:
                     application/json:
@@ -225,345 +791,99 @@ paths:
                                         location: some text
                                         points: 28.94
                 required: true
-            tags:
-                - Points
-            parameters:
-                -
-                    name: action
-                    description: |
-                        Point collection or redemption
-                    schema:
-                        enum:
-                            - collect
-                            - redeem
-                        type: string
-                    in: query
-                    required: true
             responses:
-                '200':
+                "200":
                     content:
                         application/json:
                             schema:
                                 $ref: '#/components/schemas/PointsUpdateResponse'
                             examples:
-                                Sample:
+                                Example:
                                     value:
-                                        points: 64.78
-                                        balance_points: 26.95
+                                        points: 79.99
+                                        balance_points: 90.99
                                         loyalty_id: some text
-                    description: Updated Points
-            security:
-                -
-                    APIKey: []
-            operationId: updatePoints
-            summary: Collect or redeem points
-            description: This method can be used for both points earning and redemption
-    /transactions:
-        get:
-            tags:
-                - Transactions
-            parameters:
-                -
-                    name: skip
-                    description: Number of transactions to skip. Default is 0
-                    schema:
-                        type: number
-                    in: query
-                -
-                    name: limit
-                    description: Number of transactions to limit. Default is 10
-                    schema:
-                        type: number
-                    in: query
-                -
-                    name: userId
-                    description: Loyalty id of a user
-                    schema:
-                        type: string
-                    in: query
-            responses:
-                '200':
-                    content:
-                        application/json:
-                            schema:
-                                type: array
-                                items:
-                                    $ref: '#/components/schemas/Transaction'
-                            examples:
-                                Sample:
-                                    value:
-                                        -
-                                            id: some text
-                                            points: 29.56
-                                            bill: 8.94
-                                            tier_points: 26.53
-                                            loyaltyId: some text
-                                            customerId: some text
-                                            billNumber: some text
-                                        -
-                                            id: some text
-                                            points: 50.82
-                                            bill: 7.31
-                                            tier_points: 87.08
-                                            loyaltyId: some text
-                                            customerId: some text
-                                            billNumber: some text
-                    description: Transactions
-            security:
-                -
-                    APIKey: []
-            operationId: getTransactions
-            summary: Get transactions
-            description: Get a list of loyalty transactions
-    /config:
-        get:
-            tags:
-                - Config
-            responses:
-                '200':
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Configuration'
-                            examples:
-                                Sample:
-                                    value:
-                                        points: {}
-                                        rewards: {}
-                                        tiers: {}
-                    description: Loyalty configuration
-            security:
-                -
-                    APIKey: []
-            summary: Get configuration
-            description: Get the current configuration
-        put:
-            requestBody:
-                content:
-                    application/json:
-                        schema:
-                            $ref: '#/components/schemas/Configuration'
-                required: true
-            tags:
-                - Config
-            responses:
-                '200':
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/Configuration'
-                            examples:
-                                Sample:
-                                    value:
-                                        points: {}
-                                        rewards: {}
-                                        tiers: {}
-                    description: Updated configuration
-            security:
-                -
-                    APIKey: []
-            summary: Update configuration
-            description: >-
-                Update existing configuration. Can be used to update points, rewards and product based points,
-                tiers based configurations.
-    /users:
-        summary: Users
-        description: ''
-        get:
-            tags:
-                - Users
-            parameters:
-                -
-                    name: skip
-                    description: Number of users to be skipped to get the response
-                    schema:
-                        type: integer
-                    in: query
-                -
-                    name: limit
-                    description: Number of users to be returned in the response
-                    schema:
-                        type: integer
-                    in: query
-            responses:
-                '200':
-                    content:
-                        application/json:
-                            schema:
-                                type: array
-                                items:
-                                    $ref: '#/components/schemas/User'
-                            examples:
-                                Sample:
-                                    value:
-                                        -
-                                            loyalty_id: '510010002345'
-                                            name: John Smith
-                                            points: 37.36
-                                            tier: Starter
-                                            tier_points: 84.46
-                    description: Users list
-                '500':
-                    $ref: '#/components/responses/InternalServerError'
-            security:
-                -
-                    APIKey: []
-            operationId: getUsers
-            summary: Get users
-            description: Get loyalty users list
-        post:
-            requestBody:
-                content:
-                    application/json:
-                        schema:
-                            $ref: '#/components/schemas/UserCreate'
-                        examples:
-                            Sample:
-                                value:
-                                    loyalty_id: '510010002345'
-                                    name: John Smith
-                                    mobile_number: '94771234567'
-                                    email: john@test.com
-                                    birth_date: '1988-02-10T09:30Z'
-                                    gender: male
-                                    location: Colombo
-                required: true
-            tags:
-                - Users
-            responses:
-                '201':
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/User'
-                            examples:
-                                Sample:
-                                    value:
-                                        loyalty_id: '510010002345'
-                                        name: John Smith
-                                        mobile_number: '94771234567'
-                                        email: john@test.com
-                                        birth_date: '1988-02-10T09:30Z'
-                                        gender: male
-                                        location: Colombo
-                                        points: 37.36
-                                        purchases_count: 42
-                                        purchases_value: 51
-                                        tier: Starter
-                                        tier_points: 84.46
-                                        benefits:
-                                            - 5% discount on all products
-                                            - Invitations to events
-                    description: User created
-                '400':
-                    $ref: '#/components/responses/BadRequest'
-                '500':
-                    $ref: '#/components/responses/InternalServerError'
-            security:
-                -
-                    APIKey: []
-            operationId: createUser
-            summary: Create User
-            description: Enroll user for the loyalty program
-    '/users/{userId}':
-        get:
-            tags:
-                - Users
-            parameters:
-                -
-                    examples:
-                        Sample:
-                            value: '"512012340001"'
-                    name: userId
-                    description: Loyalty id
-                    schema:
-                        type: string
-                    in: path
-                    required: true
-            responses:
-                '200':
-                    content:
-                        application/json:
-                            schema:
-                                $ref: '#/components/schemas/User'
-                            examples:
-                                Sample:
-                                    value:
-                                        loyalty_id: '510010002345'
-                                        name: John Smith
-                                        mobile_number: '94771234567'
-                                        email: john@test.com
-                                        birth_date: '1988-02-10T09:30Z'
-                                        gender: male
-                                        location: Colombo
-                                        points: 37.36
-                                        purchases_count: 42
-                                        purchases_value: 51
-                                        tier: Starter
-                                        tier_points: 84.46
-                                        benefits:
-                                            - 5% discount on all products
-                                            - Invitations to events
-                    description: User found
-                '404':
-                    $ref: '#/components/responses/NotFound'
-                '500':
-                    $ref: '#/components/responses/InternalServerError'
-            security:
-                -
-                    APIKey: []
-            operationId: getUser
-            summary: Get user
-            description: Get a loyalty user profile
+            deprecated: true
 components:
     schemas:
         Transaction:
-            description: ''
             type: object
             properties:
                 id:
-                    description: ''
                     type: string
                 points:
-                    description: ''
                     type: number
                 bill:
-                    description: ''
                     type: number
                 tier_points:
-                    description: ''
                     type: number
                 loyaltyId:
-                    description: ''
                     type: string
                 customerId:
-                    description: ''
                     type: string
                 billNumber:
-                    description: ''
                     type: string
+        Object:
+            type: object
+            description: JSON type
+            example:
+                imageUrls:
+                    - https://s3.amazonaws.com/gallery.getshoutout.com/images/43/9656b64d-76e0-4e12-82fc-6fec4c6b0a68.png
+                name: Reward 2
+                points: 100
+                type: voucher
+                metadata:
+                    amountPerRedemptionSeasonal: []
+                    amountPerRedemption: 0
+                    dailyRedemptionLimit: -1
+                userRedeemable: true
+                status: 0
+        Product:
+            title: Root Type for Product
+            required:
+                - id
+                - name
+                - price
+            type: object
+            properties:
+                id:
+                    type: string
+                    description: product id
+                name:
+                    type: string
+                    description: product name
+                price:
+                    type: integer
+                    description: product price
+                metadata:
+                    $ref: '#/components/schemas/Object'
+            example:
+                id: product id
+                name: product name
+                price: 0
+                metadata:
+                    sku: some text
         PointsUpdateActivityData:
-            description: ''
             required:
                 - bill
                 - points
             type: object
             properties:
                 bill:
+                    type: number
                     description: Bill amount
-                    type: number
                 bill_number:
+                    type: string
                     description: Reference number of the bill/invoice
-                    type: string
                 employee:
+                    type: string
                     description: Name of the employee who entered the bill
-                    type: string
                 location:
-                    description: Location of the store from where the bill is recorded
                     type: string
+                    description: Location of the store from where the bill is recorded
                 points:
-                    description: ''
                     type: number
+                    description: Fixed points amount
             example:
                 bill: 9.13
                 bill_number: some text
@@ -571,18 +891,15 @@ components:
                 location: some text
                 points: 31.22
         PointsUpdate:
-            description: ''
             required:
-                - userId
                 - activityData
+                - userId
             type: object
             properties:
                 userId:
-                    description: ''
                     type: string
                 activityData:
                     $ref: '#/components/schemas/PointsUpdateActivityData'
-                    description: ''
             example:
                 userId: some text
                 activityData:
@@ -592,21 +909,16 @@ components:
                     location: some text
                     points: 53.94
         PointsUpdateResponse:
-            description: ''
             type: object
             properties:
                 points:
-                    description: ''
                     type: number
                 balance_points:
-                    description: ''
                     type: number
                 loyalty_id:
-                    description: ''
                     type: string
         RewardCreate:
             title: Root Type for Reward
-            description: ''
             required:
                 - imageUrls
                 - name
@@ -617,37 +929,27 @@ components:
             type: object
             properties:
                 imageUrls:
-                    description: image urls array
                     type: array
+                    description: image urls array
                     items:
                         type: string
                 name:
+                    type: string
                     description: reward name
-                    type: string
                 points:
+                    type: integer
                     description: number of redeemable points required to redeem the reward
-                    type: integer
                 type:
-                    description: Reward type
                     type: string
+                    description: Reward type
                 metadata:
-                    $ref: '#/components/schemas/RewardMetadata'
-                    properties:
-                        amountPerRedemptionSeasonal:
-                            type: array
-                            items: {}
-                        amountPerRedemption:
-                            format: int32
-                            type: integer
-                        dailyRedemptionLimit:
-                            format: int32
-                            type: integer
+                    $ref: '#/components/schemas/Object'
                 userRedeemable:
-                    description: whether user allowed to redeem the reward
                     type: boolean
+                    description: whether user allowed to redeem the reward
                 status:
-                    description: reward published/ unpublished status
                     type: integer
+                    description: reward published/ unpublished status
             example:
                 imageUrls:
                     - imageurl1
@@ -663,7 +965,6 @@ components:
                 status: 0
         Reward:
             title: Root Type for Reward
-            description: ''
             required:
                 - _id
                 - imageUrls
@@ -675,42 +976,31 @@ components:
             type: object
             properties:
                 _id:
-                    description: Reward Id
                     type: string
+                    description: Reward Id
                 imageUrls:
-                    description: list of images
                     type: array
+                    description: list of images
                     items:
                         type: string
                 name:
+                    type: string
                     description: Reward name
-                    type: string
                 points:
+                    type: integer
                     description: no of redeemable points required to redeem the reward
-                    type: integer
                 type:
-                    description: Reward type
                     type: string
+                    description: Reward type
                 metadata:
-                    $ref: '#/components/schemas/RewardMetadata'
-                    description: additional metadata
-                    properties:
-                        amountPerRedemptionSeasonal:
-                            type: array
-                            items: {}
-                        amountPerRedemption:
-                            format: int32
-                            type: integer
-                        dailyRedemptionLimit:
-                            format: int32
-                            type: integer
+                    $ref: '#/components/schemas/Object'
                 userRedeemable:
-                    description: Reward is redeemable or not
                     type: boolean
+                    description: Reward is redeemable or not
                 status:
-                    format: int32
-                    description: Reward published(1)/Unpublished(0) status
                     type: integer
+                    description: Reward published(1)/Unpublished(0) status
+                    format: int32
             example:
                 _id: reward id
                 imageUrls:
@@ -727,78 +1017,14 @@ components:
                 status: 0
         Configuration:
             title: Root Type for Configuration
-            description: ''
             type: object
             properties:
                 points:
-                    $ref: '#/components/schemas/RewardMetadata'
-                    description: Points config
-                    properties:
-                        alias:
-                            type: string
-                        custom_purchasePoint:
-                            format: int32
-                            type: integer
-                        merchantBonus:
-                            format: int32
-                            type: integer
-                        minRedeemBalance:
-                            format: int32
-                            type: integer
-                        rate:
-                            format: double
-                            type: number
-                        referralBonus:
-                            format: int32
-                            type: integer
-                        registrationBonus:
-                            format: int32
-                            type: integer
+                    $ref: '#/components/schemas/Object'
                 rewards:
-                    $ref: '#/components/schemas/RewardMetadata'
-                    description: Rewards config
-                    properties:
-                        merchantName:
-                            type: string
-                        portalCoverImageUrl:
-                            type: string
-                        portalImageUrl:
-                            type: string
-                        portalName:
-                            type: string
-                        portalUrl:
-                            type: string
+                    $ref: '#/components/schemas/Object'
                 tiers:
-                    $ref: '#/components/schemas/RewardMetadata'
-                    description: Tier config
-                    properties:
-                        config:
-                            type: object
-                            properties:
-                                calculationWindow:
-                                    format: int32
-                                    type: integer
-                                immediateTierDowngrade:
-                                    type: boolean
-                                immediateTierUpdate:
-                                    type: boolean
-                        data:
-                            type: object
-                            properties:
-                                tierId:
-                                    type: object
-                                    properties:
-                                        benefits:
-                                            type: array
-                                            items:
-                                                type: string
-                                        imageUrl:
-                                            type: string
-                                        name:
-                                            type: string
-                                        points:
-                                            format: int32
-                                            type: integer
+                    $ref: '#/components/schemas/Object'
             example:
                 points:
                     alias: Points
@@ -826,169 +1052,246 @@ components:
                             imageUrl: tier image
                             name: tier name
                             points: 0
-        UserCreate:
-            description: ''
+        Activity:
+            required:
+                - activityData
+                - activityName
+                - userId
             type: object
             properties:
-                loyalty_id:
-                    description: Loyalty id of the customer
+                userId:
                     type: string
-                name:
-                    description: Name of the customer
+                activityName:
                     type: string
-                mobile_number:
-                    description: ''
-                    type: string
-                email:
-                    description: ''
-                    type: string
-                birth_date:
-                    format: date-time
-                    description: ''
-                    type: string
-                gender:
-                    description: ''
-                    enum:
-                        - male
-                        - female
-                    type: string
-                location:
-                    description: ''
-                    type: string
+                activityData:
+                    $ref: '#/components/schemas/Object'
             example:
-                loyalty_id: '510010002345'
-                name: John Smith
-                mobile_number: '94771234567'
-                email: john@test.com
-                birth_date: '1988-02-10T09:30Z'
-                gender: male
-                location: Colombo
-        User:
-            description: ''
+                userId: some text
+                activityName: some text
+                activityData:
+                    param1: val1
+                    param2: val2
+        Customer:
             type: object
             properties:
                 loyalty_id:
+                    type: string
                     description: Loyalty id of the customer
-                    type: string
                 name:
+                    type: string
                     description: Name of the customer
-                    type: string
-                mobile_number:
-                    description: ''
-                    type: string
-                email:
-                    description: ''
-                    type: string
-                birth_date:
-                    format: date-time
-                    description: ''
-                    type: string
-                gender:
-                    description: ''
-                    enum:
-                        - male
-                        - female
-                    type: string
-                location:
-                    description: ''
-                    type: string
                 points:
-                    description: Points balance
                     type: number
-                purchases_count:
-                    description: Number of purchases
-                    type: integer
-                purchases_value:
-                    description: Total purchases value
-                    type: integer
+                    description: Redeemable loyalty points
                 tier:
-                    description: Current tier name
                     type: string
+                    description: Tier of the customer
                 tier_points:
-                    description: Tier points for the current calculation window
                     type: number
-                benefits:
-                    description: Benefits for the current tier
-                    type: array
-                    items:
-                        type: string
+                    description: Tier points of the customers
             example:
-                loyalty_id: '510010002345'
-                name: John Smith
-                mobile_number: '94771234567'
-                email: john@test.com
-                birth_date: '1988-02-10T09:30Z'
-                gender: male
-                location: Colombo
-                points: 37.36
-                purchases_count: 42
-                purchases_value: 51
-                tier: Starter
-                tier_points: 84.46
-                benefits:
-                    - 5% discount on all products
-                    - Invitations to events
-        Generic:
-            title: Root Type for Generic
-            description: ''
+                loyalty_id: some text
+                name: some text
+                points: 78.85
+                tier: some text
+                tier_points: 98.36
+        CustomerCreate:
             type: object
             properties:
-                message:
+                loyalty_id:
+                    type: string
+                    description: Loyalty id of the customer
+                name:
+                    type: string
+                    description: Name of the customer
+                mobile_number:
+                    type: string
+                email:
+                    type: string
+                birth_date:
+                    type: string
+                    format: date-time
+                gender:
+                    type: string
+                    enum:
+                        - male
+                        - female
+                location:
                     type: string
             example:
-                message: something went wrong
-        RewardMetadata:
-            description: JSON type
+                loyalty_id: some text
+                name: some text
+                mobile_number: some text
+                email: some text
+                birth_date: 2018-02-10T09:30Z
+                gender: male
+                location: some text
+        PointsCollect:
+            required:
+                - activityData
+                - userId
             type: object
+            properties:
+                userId:
+                    type: string
+                activityData:
+                    $ref: '#/components/schemas/PointsCollectActivityData'
+            example:
+                userId: some text
+                activityData:
+                    bill: 50.6
+                    bill_number: some text
+                    employee: some text
+                    location: some text
+                    points: 83.81
+        PointsCollectActivityData:
+            required:
+                - bill
+                - points
+            type: object
+            properties:
+                bill:
+                    type: number
+                    description: Bill amount (Either bill or points required)
+                bill_number:
+                    type: string
+                    description: Reference number of the bill/invoice
+                employee:
+                    type: string
+                    description: Name of the employee who entered the bill
+                location:
+                    type: string
+                    description: Location of the store from where the bill is recorded
+                points:
+                    type: number
+                    description: Fixed points amount (Either bill or points required)
+            example:
+                bill: 9.13
+                bill_number: some text
+                employee: some text
+                location: some text
+                points: 31.22
+        PointsCollectResponse:
+            type: object
+            properties:
+                points:
+                    type: number
+                loyalty_id:
+                    type: string
+                total_points:
+                    type: number
+                tier_points:
+                    type: number
+                user_type:
+                    type: string
+            example:
+                points: 62.36
+                loyalty_id: some text
+                total_points: 15.83
+                tier_points: 63.63
+                user_type: some text
+        PointsRedeemResponse:
+            type: object
+            properties:
+                balance_points:
+                    type: number
+                redeemed_points:
+                    type: number
+            example:
+                balance_points: 61.24
+                redeemed_points: 56.53
+        PointsRedeem:
+            required:
+                - activityData
+                - userId
+            type: object
+            properties:
+                userId:
+                    type: string
+                activityData:
+                    $ref: '#/components/schemas/PointsRedeemActivityData'
+            example:
+                userId: some text
+                activityData:
+                    bill_number: some text
+                    employee: some text
+                    location: some text
+                    points: 96.95
+        PointsRedeemActivityData:
+            required:
+                - points
+            type: object
+            properties:
+                bill_number:
+                    type: string
+                    description: Reference number of the bill/invoice
+                employee:
+                    type: string
+                    description: Name of the employee who is performing the redemption
+                location:
+                    type: string
+                    description: Location of the store from where the bill is recorded
+                points:
+                    type: number
+                    description: Fixed points amount to redeem
+            example:
+                bill_number: some text
+                employee: some text
+                location: some text
+                points: 30.53
     responses:
-        NotFound:
-            description: Resource not found
-        BadRequest:
-            description: Bad request
-        InternalServerError:
+        ProductResponse:
+            description: Product create/update response
             content:
                 application/json:
                     schema:
-                        $ref: '#/components/schemas/Generic'
+                        $ref: '#/components/schemas/Product'
+        PointsUpdateResponse:
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/PointsUpdateResponse'
                     examples:
-                        Sample:
+                        Example:
                             value:
-                                message: Something went wrong
-            description: Internal error
+                                points: 79.99
+                                balance_points: 90.99
+                                loyalty_id: some text
+        RewardsResponse:
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/Reward'
+        ConfigurationResponse:
+            content:
+                application/json:
+                    schema:
+                        $ref: '#/components/schemas/Configuration'
+        TransactionsResponse:
+            content:
+                application/json:
+                    schema:
+                        type: array
+                        items:
+                            $ref: '#/components/schemas/Transaction'
+                    examples:
+                        Example:
+                            value:
+                                - id: some text
+                                  points: 75.75
+                                  bill: 51.07
+                                  transactionName: COLLECT_POINTS
+                                  tierPoints: 72.76
+                                  loyaltyId: some text
+                                  customerId: some text
+                                  billNumber: some text
+                                - id: some text
+                                  points: 32.66
+                                  transactionName: REDEEM_POINTS
+                                  tierPoints: 27.85
+                                  loyaltyId: some text
+                                  customerId: some text
     securitySchemes:
         APIKey:
-            scheme: bearer
             type: http
-security:
-    -
-        APIKey: []
-tags:
-    -
-        name: Rewards
-        description: 'Digital, Voucher based rewards which can be redeemed for redeemable points. '
-    -
-        name: Config
-        description: >-
-            Loyalty configuration updates. Set points, rewards related and product based points, tiers
-            configurations.
-    -
-        name: Points
-        description: >-
-            Points is a numeric score that is issued to the customer as a measure of their loyalty with the
-            business. Points collected for bill values, are calculated based on a pre-defined conversion rate.
-            Points collected directly via the points amount is directly accumulated to the total points.
-
-
-            Points can be directly redeemed by specifying the points amount.
-    -
-        name: Transactions
-        description: Transactions are the point collections and point redemptions of the customers
-    -
-        name: Activities
-        description: >-
-            Activities are the actions performed by the customers. Loyalty platform automatically generates
-            activities for the major loyalty events like registration, points collection and redemption,
-            reward redemption etc
-    -
-        name: Users
-        description: Users are the customers who are enrolled in the loyalty program
+            scheme: bearer
