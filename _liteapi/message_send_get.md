@@ -20,7 +20,7 @@ content_markdown: |-
 left_code_blocks:
 
   - code_block: |-
-    curl --request GET 'https://api.getshoutout.com/coreservice/messages?source=ShoutDEMO&destinations[]=94777123456&content=Test%20SMS&apiKeyId=xxxxxxx-xxxx-xxx-xxx-xxxxx'
+      curl --request GET 'https://api.getshoutout.com/coreservice/messages?source=ShoutDEMO&destinations[]=94777123456&content=Test%20SMS&apiKeyId=xxxxxxx-xxxx-xxx-xxx-xxxxx'
     title: Curl
     language: bash
 
