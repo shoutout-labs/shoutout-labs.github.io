@@ -1,6 +1,6 @@
 ---
 title: /logs/{id}
-position: 1.5
+position: 1.6
 type: get
 description: Get log for message id
 parameters:

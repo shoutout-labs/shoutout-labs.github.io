@@ -2,7 +2,7 @@
 title: /messages
 position: 1.4
 type: post
-description: Send SMS Message
+description: Send SMS Message (Recommended method)
 parameters:
   - name: source
     content: Sender mask (Alias)
