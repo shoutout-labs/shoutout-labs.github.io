@@ -20,18 +20,17 @@ content_markdown: |-
 left_code_blocks:
 
   - code_block: |-
-      curl -X POST 
-      --header 'Content-Type: application/json' 
-      --header 'Accept: application/json' 
-      --header 'Authorization: Apikey <API_KEY>' 
-      -d '{
-        source: 'ShoutDEMO',
-        destinations: ['94777123456'],
-        content: {
-            sms: 'Sent via SMS Gateway'
-        },
-        transports: ['sms']
-      }' 'https://api.getshoutout.com/coreservice/messages'
+        curl --location --request POST 'https://api.getshoutout.com/coreservice/messages' \
+        --header 'Authorization: Bearer <API_KEY>' \
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+          "source": "ShoutDEMO",
+          "destinations": ["94777123456"],
+          "content": {
+              "sms": "Sent via SMS Gateway"
+          },
+          "transports": ["sms"]
+        }'
     title: Curl
     language: bash
 
