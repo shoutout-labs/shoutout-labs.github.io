@@ -45,7 +45,12 @@ right_code_blocks:
   - code_block: |-
       {
         "id": "{id}",
-        "status": "1000"
+        "from": "ShoutDEMO",
+        "to": "94777123456",
+        "status": "1000",
+        "isDelivered": true,
+        "createdOn": "2018-05-01T10:40:36.841Z",
+        "modifiedOn": "2018-05-01T10:40:36.841Z"
       }
 
       Message Status
