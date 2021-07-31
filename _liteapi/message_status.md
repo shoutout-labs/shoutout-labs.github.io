@@ -47,7 +47,7 @@ right_code_blocks:
         "id": "{id}",
         "from": "ShoutDEMO",
         "to": "94777123456",
-        "status": "1000",
+        "status": "1001",
         "isDelivered": true,
         "createdOn": "2018-05-01T10:40:36.841Z",
         "modifiedOn": "2018-05-01T10:40:36.841Z"
