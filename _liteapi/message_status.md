@@ -17,12 +17,12 @@ left_code_blocks:
       --header 'Content-Type: application/json' 
       --header 'Accept: application/json' 
       --header 'Authorization: Apikey <API_KEY>' 
-      'https://api.getshoutout.com/coreservice/logs/{id}'
+      'https://api.getshoutout.com/campaignservice/logs/{id}'
     title: Curl
     language: bash
 
   - code_block: |-
-      $.get("https://api.getshoutout.com/coreservice/logs/{id}", {
+      $.get("https://api.getshoutout.com/campaignservice/logs/{id}", {
       }, function(data) {
         alert(data);
       });
