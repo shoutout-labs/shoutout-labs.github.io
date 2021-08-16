@@ -45,7 +45,11 @@ right_code_blocks:
   - code_block: |-
       {
         "id": "{id}",
-        "status": "1000"
+        "from": "ShoutDEMO",
+        "to": "94777123456",
+        "status": "1001",
+        "createdOn": "2018-05-01T10:40:36.841Z",
+        "modifiedOn": "2018-05-01T10:40:36.841Z"
       }
 
       Message Status
@@ -55,6 +59,8 @@ right_code_blocks:
         1012 - No Route
         1015 - Blocked
         1026 - Submitted
+        1029 - Delivered
+        1030 - Undelivered
     title: Response
     language: json
 ---
